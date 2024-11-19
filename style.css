@@ -1,0 +1,97 @@
+body
+{
+	width: 100vw;
+	height: 100vh;
+	padding: 0;
+	margin: 0;
+	text-decoration: none;
+    display: flex;
+	flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.canvas
+{
+	border: 10px solid #5c4248;
+	border-radius: 0 10px 10px 0;
+}
+
+.panel
+{
+	margin-top: 20px;
+	width: 1280px;
+	display: flex;
+	flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.slider
+{
+	margin-top: 5px;
+	font-weight: bold;
+	font-size: large;
+	padding: px;
+}
+
+.slider .slide
+{
+	width: 120px;
+	padding-top: 10px;
+}
+
+.textbox
+{
+	margin-left: 15px;
+	width: 60px;
+	height: 60px;
+	background: #0077b6;
+	border: 5px solid #00b4d8;
+	border-radius: 10px;
+}
+
+.textbox p
+{
+	position: relative;
+	color: #ffffff;
+	text-align: center;
+	font-weight: bold;
+	font-size: 27px;
+	line-height: 0.25;
+}
+
+.dropbox
+{
+	margin-top: 5px;
+	font-weight: bold;
+	font-size: large;
+	padding: px;
+}
+
+#start-btn
+{
+	margin-left: 20px;
+	width: 300px;
+	height: 70px;
+	background: #34a0a4;
+	border: 5px solid #99d98c;
+	border-radius: 10px;
+	color: #ffffff;
+	text-align: center;
+	font-weight: bold;
+	font-size: 27px;
+	outline : none;
+}
+
+#start-btn:hover
+{
+	animation: bounce 1s;
+}
+
+@keyframes bounce 
+{
+	0%, 20%, 60%, 100%	{transform: translateY(0);}
+	40% 				{transform: translateY(-10px);}
+	80% 				{transform: translateY(-5px);}
+}
