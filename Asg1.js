@@ -64,6 +64,13 @@ function getUIElement()
     speedText = document.getElementById("speed-text");
     startBtn = document.getElementById("start-btn");
 
+	// Add new UI controls
+    bottomRightTopLeft = document.getElementById("bottom-right-top-left");
+    rotateXAxis = document.getElementById("rotate-x-axis");
+    rotateYAxis = document.getElementById("rotate-y-axis");
+    noTexture = document.getElementById("no-texture");
+    textureOverlay = document.getElementById("texture-overlay");
+	
     subdivSlider.onchange = function(event) 
 	{
 		subdivNum = event.target.value;
@@ -200,6 +207,18 @@ function animUpdate()
     modelViewMatrix = mat4();
     modelViewMatrix = mult(modelViewMatrix, translate(0, -0.2357, 0));
 
+	// Handle new animations
+    if (bottomRightTopLeft.checked) {
+        move[0] += 0.01 * speedNum;
+        move[1] += 0.01 * speedNum;
+        if (move[0] > 3.0 || move[1] > 1.2) {
+            move[0] = -3.0;
+            move[1] = -1.2;
+        }
+    }
+    if (rotateXAxis.checked) theta[0] += 1 * speedNum;
+    if (rotateYAxis.checked) theta[1] += 1 * speedNum;
+	
     // Switch case to handle the ongoing animation sequence
     // The animation is executed sequentially from case 0 to case n
     switch(animSeq)
