@@ -95,3 +95,66 @@ body
 	40% 				{transform: translateY(-10px);}
 	80% 				{transform: translateY(-5px);}
 }
+
+/* Add a new color selector style */
+#color-picker {
+    margin-top: 10px;
+    padding: 0;
+    border: none;
+    outline: none;
+    height: 40px;
+    width: 120px;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: #333;
+    color: white;
+}
+
+/* 动画选项面板样式 */
+#animation-options {
+    margin-top: 20px;
+    padding: 15px;
+    width: 300px;
+    background-color: #444;
+    border-radius: 10px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
+    color: white;
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    text-align: left;
+}
+
+#animation-options fieldset {
+    border: 1px solid #666;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+#animation-options label {
+    display: block;
+    margin: 8px 0;
+    cursor: pointer;
+}
+
+#animation-options input[type="checkbox"],
+#animation-options input[type="radio"] {
+    margin-right: 8px;
+}
+
+/* Responsive layout */
+@media (max-width: 768px) {
+    .panel {
+        flex-direction: column;
+        width: 90%;
+    }
+
+    #animation-options {
+        margin-top: 10px;
+        width: 90%;
+        text-align: center;
+    }
+
+    #start-btn {
+        width: 100%;
+    }
+}
