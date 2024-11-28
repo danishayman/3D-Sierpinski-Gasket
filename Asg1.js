@@ -208,23 +208,14 @@ function animUpdate()
     modelViewMatrix = mult(modelViewMatrix, translate(0, -0.2357, 0));
 
 	// Handle new animations
-    if (bottomRightTopLeft.checked) {
-        move[0] += 0.01 * speedNum;
-        move[1] += 0.01 * speedNum;
-        if (move[0] > 3.0 || move[1] > 1.2) {
-            move[0] = -3.0;
-            move[1] = -1.2;
-        }
-    }
-    if (rotateXAxis.checked) theta[0] += 1 * speedNum;
-    if (rotateYAxis.checked) theta[1] += 1 * speedNum;
+
 	
     // Switch case to handle the ongoing animation sequence
     // The animation is executed sequentially from case 0 to case n
     switch(animSeq)
     {
         case 0: // Animation 1: Rotate the triangle 180 degrees to the right
-            theta[2] -= 1 * speedNum;
+            theta[2] -= speedNum;
 
             if(theta[2] <= -180)
             {
@@ -235,7 +226,7 @@ function animUpdate()
             break;
 
         case 1: // Animation 2: Rotate the triangle 180 degrees to the left
-            theta[2] += 1 * speedNum;
+            theta[2] += speedNum;
 
             if(theta[2] >= 180)
             {
@@ -247,7 +238,7 @@ function animUpdate()
 
 
         case 2: // Animation 3: Rotate the triangle to original position
-            theta[2] -= 1 * speedNum;
+            theta[2] -= speedNum;
 
             if(theta[2] <= 0)
             {
@@ -258,7 +249,7 @@ function animUpdate()
             break;
 
         case 3: // Animation 4: Enlarge the triangle to an appropriate size
-            scaleNum += 0.02 * speedNum;
+            scaleNum += 0.02 *speedNum;
 
             if(scaleNum >= 5)
             {
@@ -276,50 +267,69 @@ function animUpdate()
                 animSeq++;
             }
             break;
+
         //ROTATE ALONG X AXIS
         case 5: // Animation 6:  Rotate the triangle 180 degrees to the top
-            theta[0] += 1 * speedNum;
+            if (rotateXAxis.checked) {
 
-            if(theta[0] >= 180)
-            {
-                theta[0] = 180;
+                theta[0] += speedNum;
+
+                if(theta[0] >= 180)
+                {
+                    theta[0] = 180;
+                    animSeq++;
+                }
+            }
+            else{
                 animSeq++;
             }
             break;
 
         case 6: // Animation 7: Rotate the triangle 180 degrees to the bottom
-            theta[0] -= 1 * speedNum;
+            if (rotateXAxis.checked) {
+                theta[0] -= speedNum;
 
-            if(theta[0] <= -180)
-            {
-                theta[0] = -180;
+                if(theta[0] <= -180)
+                {
+                    theta[0] = -180;
+                    animSeq++;
+                }
+            }
+            
+            else{
                 animSeq++;
             }
             break;
 
         case 7: // Animation 8:  Rotate the triangle to the original position 
 
-            theta[0] += 1 * speedNum;
+                theta[0] += 1 * speedNum;
 
-            if(theta[0] >= 0)
-            {
-                theta[0] = 0;
-                animSeq++;
-            }
-            break;
+                if(theta[0] >= 0)
+                {
+                    theta[0] = 0;
+                    animSeq++;
+                }
+                break;
 
         //ROTATE ALONG Y AXIS
         case 8: // Animation 9: Rotate the triangle 180 degrees to the right
-            theta[1] -= 1 * speedNum;
+        if (rotateYAxis.checked) {  
+                theta[1] -= 1 * speedNum;
 
-            if(theta[1] <= -180)
-            {
-                theta[1] = -180;
+                if(theta[1] <= -180)
+                {
+                    theta[1] = -180;
+                    animSeq++;
+                }
+            }
+            else{
                 animSeq++;
             }
             break;
 
         case 9: // Animation 10: Rotate the triangle 180 degrees to the left
+        if (rotateYAxis.checked) {
             theta[1] += 1 * speedNum;
 
             if(theta[1] >= 180)
@@ -327,6 +337,10 @@ function animUpdate()
                 theta[1] = 180;
                 animSeq++;
             }
+        }
+        else{
+            animSeq++;
+        }
             break;
 
         case 10: // Animation 11: Rotate the triangle to the original position
