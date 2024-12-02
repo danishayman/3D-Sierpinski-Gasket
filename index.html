@@ -1,127 +1,157 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>CPC354 Assignment 1</title>
 
-<head>
-	<meta charset="utf-8">
-	<title>CPC354 Assignment 1</title>
+    <!-- Link CSS, JS, and WebGL -->
+    <!-- webgl-utils.js	: standard utilities from Google to set up a WebGL context -->
+    <!-- initShaders.js	: contains helper functions to compile and link WebGL shaders to the application -->
+    <!-- MV.js			: provides matrix and vector manipulation functions APIs for WebGL -->
+    <!-- DemoJS.js		: your JS file -->
+    <!-- DemoCSS.css	: your CSS file -->
+    <script type="text/javascript" src="Common/webgl-utils.js"></script>
+    <script type="text/javascript" src="Common/initShaders.js"></script>
+    <script type="text/javascript" src="Common/MV.js"></script>
+    <script type="text/javascript" src="Asg1.js"></script>
+    <link rel="stylesheet" type="text/css" href="style.css" />
 
-	<!-- Link CSS, JS, and WebGL -->
-	<!-- webgl-utils.js	: standard utilities from Google to set up a WebGL context -->
-	<!-- initShaders.js	: contains helper functions to compile and link WebGL shaders to the application -->
-	<!-- MV.js			: provides matrix and vector manipulation functions APIs for WebGL -->
-	<!-- DemoJS.js		: your JS file -->
-	<!-- DemoCSS.css	: your CSS file -->
-	<script type="text/javascript" src="Common/webgl-utils.js"></script>
-	<script type="text/javascript" src="Common/initShaders.js"></script>
-	<script type="text/javascript" src="Common/MV.js"></script>
-	<script type="text/javascript" src="Asg1.js"></script>
-	<link rel="stylesheet" type="text/css" href="style.css">
+    <!-- Define the vertex shader -->
+    <script id="vertex-shader" type="x-shader/x-vertex">
+      // Declare the global variable(s) for draw calls
+      uniform mat4 projectionMatrix;
+      uniform mat4 modelViewMatrix;
 
-	<!-- Define the vertex shader -->
-	<script id="vertex-shader" type="x-shader/x-vertex">
-		// Declare the global variable(s) for draw calls
-		uniform mat4 projectionMatrix;
-		uniform mat4 modelViewMatrix;
-		
-		// Declare the input variable(s) to receive per-vertex data from the application
-		attribute vec4 vPosition;
-		attribute vec4 vColor;
-		attribute vec2 vTexCoord;
-		
-		// Declare the varying variable(s) to pass data to the fragment shader
-		varying vec4 fColor;
-		varying vec2 fTexCoord;
+      // Declare the input variable(s) to receive per-vertex data from the application
+      attribute vec4 vPosition;
+      attribute vec4 vColor;
+      attribute vec2 vTexCoord;
 
-		void main()
-		{
-			gl_Position = projectionMatrix * modelViewMatrix * vPosition;
-			fColor = vColor;
-			fTexCoord = vTexCoord;
-		}
-	</script>
+      // Declare the varying variable(s) to pass data to the fragment shader
+      varying vec4 fColor;
+      varying vec2 fTexCoord;
 
-	<!-- Define the fragment shader -->
-	<script id="fragment-shader" type="x-shader/x-fragment">
-		precision mediump float;
-		varying vec4 fColor;
-		varying vec2 fTexCoord;
-		uniform sampler2D texture;
+      void main()
+      {
+      	gl_Position = projectionMatrix * modelViewMatrix * vPosition;
+      	fColor = vColor;
+      	fTexCoord = vTexCoord;
+      }
+    </script>
 
-		void main()
-		{
-			gl_FragColor = fColor * texture2D(texture,fTexCoord);
-		}
-	</script>
-</head>
+    <!-- Define the fragment shader -->
+    <script id="fragment-shader" type="x-shader/x-fragment">
+      precision mediump float;
+      varying vec4 fColor;
+      varying vec2 fTexCoord;
+      uniform sampler2D texture;
 
-<body>
-	<!-- Canvas for the graphic rendering -->
-	<div class="canvas">
-		<canvas id="gl-canvas" width="1280" height="720">
-			Error: your browser doesn't support the HTML5 canvas element
-		</canvas>
-		<img id="notexture" src="https://i.postimg.cc/kMKrJd9B/BG001.jpg" alt="notexture" crossOrigin="anonymous" hidden>
-		<img id="texture" src="https://i.postimg.cc/15ppPZHR/BG003.jpg" alt="texture" crossOrigin="anonymous" hidden>
-	</div>
+      void main()
+      {
+      	gl_FragColor = fColor * texture2D(texture, fTexCoord);
+      }
+    </script>
+  </head>
 
+  <body>
+    <!-- Canvas for the graphic rendering -->
+    <div class="canvas">
+      <canvas id="gl-canvas" width="1280" height="720">
+        Error: your browser doesn't support the HTML5 canvas element
+      </canvas>
+      <img
+        id="notexture"
+        src="https://i.postimg.cc/kMKrJd9B/BG001.jpg"
+        alt="notexture"
+        crossorigin="anonymous"
+        hidden
+      />
+      <img
+        id="texture"
+        src="https://i.postimg.cc/15ppPZHR/BG003.jpg"
+        alt="texture"
+        crossorigin="anonymous"
+        hidden
+      />
+    </div>
+
+    <!-- Panel for parameter customization -->
+    <div class="panel vertical-align">
+      <!-- Slider for number of subdivision -->
+      <div class="param-panel horizontal-align">
+        <div class="slider">
+          No. of Subdivision
+          <br />1<input
+            class="slide"
+            id="subdiv-slider"
+            type="range"
+            min="1"
+            max="5"
+            value="3"
+          />5
+        </div>
+        <div class="textbox">
+          <p id="subdiv-text">3</p>
+        </div>
+      </div>
+
+      <!-- Slider for animation loop count -->
+      <div class="param-panel horizontal-align">
+        <div class="slider">
+          No. of Iteration
+          <br />1<input
+            class="slide"
+            id="iter-slider"
+            type="range"
+            min="1"
+            max="5"
+            value="1"
+          />5
+        </div>
+        <div class="textbox">
+          <p id="iter-text">1</p>
+        </div>
+      </div>
+
+      <!-- Dropbox for Speed  -->
+      <div class="param-panel horizontal-align">
+        <div class="speed">
+          Animation Speed
+          <select id="speed-dropdown">
+            <option value="0.25">x0.25</option>
+            <option value="0.5">x0.5</option>
+            <option value="1" selected>x1</option>
+            <option value="2">x2</option>
+             
+            <option value="5">x5</option>
+          </select>
+        </div>
+        <div class="textbox">
+          <p id="speed-text">1</p>
+        </div>
+      </div>
+
+      <!-- UI Section for Additional Animation -->
+      <div id="param-panel horizontal-align">
+        <div class="animation-options">
+          <legend>Additional Animations</legend>
+          <label><input type="checkbox" id="rotate-x-axis" /> Rotate x-axis</label>
+		  <label><input type="checkbox" id="rotate-" /> Top Right - Bottom Left</label>
+          <label><input type="checkbox" id="top-ley-axis" /> Rotate y-axis</label>
+          <label><input type="checkbox" id="top-right-bottom-leftft-bottom-right" /> Top Left -Bottom Right</label>
+        </div>
+      </div>
+
+	  <!-- UI Section for Texture -->
+	<div id="param-panel horizontal-align">
+		<div class="animation-options">
+			<legend>Texture</legend>
+			<label><input type="radio" name="texture" id="no-texture" checked /> No Texture</label>
+			<label><input type="radio" name="texture" id="texture-overlay" /> Add Texture</label>
 	
-	<!-- Panel for parameter customization -->
-	<div class="panel">
-		<!-- Slider for number of subdivision -->
-		<div class="panel">
-			<div class="slider">
-				No. of Subdivision
-				<br>1<input class="slide" id="subdiv-slider" type="range" min="1" max="5" value="3">5
-			</div>
-			<div class="textbox">
-				<p id="subdiv-text">3</p>
-			</div>
-		</div>
 
-		<!-- Slider for animation loop count -->
-		<div class="panel">
-			<div class="slider">
-				No. of Iteration
-				<br>1<input class="slide" id="iter-slider" type="range" min="1" max="5" value="1">5
-			</div>
-			<div class="textbox">
-				<p id="iter-text">1</p>
-			</div>
-		</div>
-
-		<!-- Dropbox for Speed  -->
-		<div class="panel">
-			<div class="dropbox">
-				Animation Speed
-				<select id="speed-dropdown">
-					<option value="0.25">x0.25</option>
-					<option value="0.5">x0.5</option>
-					<option value="1" selected>x1</option>
-					<option value="2">x2</option>  
-					<option value="5">x5</option>
-				</select>
-			</div>
-			<div class="textbox">
-				<p id="speed-text">1</p>
-			</div>
-		</div>
-
-		<!-- Animation start button -->
-		<input id="start-btn" type="button" value="Start Animation">
-	</div>
-
-	<!-- New UI Section for Additional Animation -->
-	<div id="panel">
-		<fieldset id="animation-options">
-			<legend>Additional Animation</legend>
-			<label><input type="checkbox" id="rotate-x-axis"> Rotate x-axis</label>
-			<label><input type="checkbox" id="rotate-y-axis"> Rotate y-axis</label>
-			<label><input type="checkbox" id="top-right-bottom-left"> Top Right - Bottom Left</label>
-			<label><input type="checkbox" id="top-left-bottom-right"> Top Left - Bottom Right</label>
-			<label><input type="radio" name="texture" id="no-texture" checked> No Texture</label>
-			<label><input type="radio" name="texture" id="texture-overlay"> Add Texture</label>
-		</fieldset>
-	</div>
-</body>
-
+      <!-- Animation start button -->
+      <input id="start-btn" type="button" value="Start Animation" />
+    </div>
+  </body>
 </html>

@@ -16,7 +16,6 @@ var theta = [0, 0, 0], move = [0, 0, 0];
 var subdivNum = 3, iterNum = 1, scaleNum = 1, speedNum = 1;
 var iterTemp = 0, animSeq = 0, animFrame = 0, animFlag = false;
 
-
 // Variables for the 3D Sierpinski gasket
 var points = [], colors = [], textures = [];
 
@@ -34,8 +33,9 @@ var baseColors = [
     vec4(1.0, 0.2, 0.4, 1.0),
     vec4(0.0, 0.9, 1.0, 1.0),
     vec4(0.2, 0.2, 0.5, 1.0),
-    vec4(1.0, 0.0, 1.0, 1.0)
+    vec4(0.0, 0.0, 0.0, 1.0)
 ];
+
 // Define texture coordinates for texture mapping onto a shape or surface
 var texCoord = 
 [
@@ -44,6 +44,7 @@ var texCoord =
     vec2(1, 1), // Top-right corner of the texture
     vec2(1, 0)  // Bottom-right corner of the texture
 ];
+
 /*-----------------------------------------------------------------------------------*/
 // WebGL Utilities
 /*-----------------------------------------------------------------------------------*/
@@ -121,7 +122,7 @@ function getUIElement()
         speedNum = parseFloat(event.target.value); // Parse the value as a float
         speedText.innerHTML = speedNum;
         recompute();
-    };;
+    };
     
 
     startBtn.onclick = function()
@@ -142,7 +143,7 @@ function configWebGL()
     if(!gl)
     {
         alert("WebGL isn't available");
-    }
+    };
 
     // Set the viewport and clear the color
     gl.viewport(0, 0, canvas.width, canvas.height);
@@ -543,7 +544,7 @@ function enableUI()
 
 // Reset all necessary variables to their default values
 function resetValue()
-{ 
+{
     theta = [0, 0, 0];
     move = [0, 0, 0];
     scaleNum = 1;
@@ -554,7 +555,7 @@ function resetValue()
 // Check whether whether a given number value is a power of 2
 function isPowerOf2(value) 
 {
-  return (value & (value - 1)) == 0;
+    return (value & (value - 1)) == 0;
 }
 
 // Configure the texture
