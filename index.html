@@ -78,7 +78,7 @@
     <!-- Panel for parameter customization -->
     <div class="panel vertical-align">
 		Number of Subdivision
-		<div class="subdivision">
+		<div class="radio-selector">
 		  <label>
 			<input type="radio" name="subdiv" value="1" id="subdiv-1" checked>
 			<span>1</span>
@@ -103,22 +103,31 @@
 		</div>
 
       <!-- Slider for animation loop count -->
-      <div class="param-panel horizontal-align">
-        <div class="slider">
-          No. of Iteration
-          <br />1<input
-            class="slide"
-            id="iter-slider"
-            type="range"
-            min="1"
-            max="5"
-            value="1"
-          />5
-        </div>
-        <div class="textbox">
-          <p id="iter-text">1</p>
-        </div>
-      </div>
+      <div class="param vertical-align">
+		Number of Iteration
+		<div class="radio-selector">
+		  <label>
+			<input type="radio" name="iter" value="1" id="iter-1" checked>
+			<span>1</span>
+		  </label>
+		  <label>
+			<input type="radio" name="iter" value="2" id="iter-2">
+			<span>2</span>
+		  </label>
+		  <label>
+			<input type="radio" name="iter" value="3" id="iter-3">
+			<span>3</span>
+		  </label>
+		  <label>
+			<input type="radio" name="iter" value="4" id="iter-4">
+			<span>4</span>
+		  </label>
+		  <label>
+			<input type="radio" name="iter" value="5" id="iter-5">
+			<span>5</span>
+		  </label>
+		  <span class="selection"></span>
+		</div>
 
       <!-- Dropbox for Speed  -->
       <div class="param-panel horizontal-align">
@@ -129,7 +138,6 @@
             <option value="0.5">x0.5</option>
             <option value="1" selected>x1</option>
             <option value="2">x2</option>
-             
             <option value="5">x5</option>
           </select>
         </div>
@@ -139,7 +147,7 @@
       </div>
 
 	   <!-- UI Section for Additional Animation -->
-	   <div id="param-panel" class="horizontal-align">
+	   <div id="param vertical-align">
 	   	<div class="animation-options">
 	   	<legend>Additional Animations</legend>
 	   

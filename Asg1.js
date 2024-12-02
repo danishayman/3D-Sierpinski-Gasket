@@ -66,15 +66,16 @@ window.onload = function init()
 function getUIElement() {
     canvas = document.getElementById("gl-canvas");
 
-    const radioButtons = document.querySelectorAll('input[name="subdiv"]');
 
+
+    //Function to handle  subdivision radio buttons
+    const subdivRadioButton = document.querySelectorAll('input[name="subdiv"]');
     function updateScene(subdivValue) {
         const numSubdivs = parseInt(subdivValue);
         subdivNum = numSubdivs;
         recompute();
     }
-
-    radioButtons.forEach(radioButton => {
+    subdivRadioButton.forEach(radioButton => {
         radioButton.addEventListener('change', () => {
             const selectedSubdiv = document.querySelector('input[name="subdiv"]:checked').value;
             updateScene(selectedSubdiv);
@@ -83,6 +84,27 @@ function getUIElement() {
 
     const initialSubdiv = document.querySelector('input[name="subdiv"]:checked').value;
     updateScene(initialSubdiv);
+
+
+
+    //Function to handle  iteration radio buttons
+    const iterRadioButton = document.querySelectorAll('input[name="iter"]');
+    function updateIterations(iterValue) {
+      const numIterations = parseInt(iterValue); 
+      iterNum = numIterations; // Update the iterNum variable
+      // You might need to call a function here to update your animation logic
+    }
+    iterRadioButton.forEach(radioButton => {
+      radioButton.addEventListener('change', () => {
+        const selectedIter = document.querySelector('input[name="iter"]:checked').value;
+        updateIterations(selectedIter);
+      });
+    });
+    const initialIter = document.querySelector('input[name="iter"]:checked').value;
+    updateIterations(initialIter);
+
+
+    
 
     subdivSlider = document.getElementById("subdiv-slider");
     subdivText = document.getElementById("subdiv-text");
@@ -110,7 +132,7 @@ function getUIElement() {
         recompute();
     };
 
-    iterSlider.onchange = function(event) 
+    iterSlider = function(event) 
 	{
 		iterNum = event.target.value;
 		iterText.innerHTML = iterNum;
