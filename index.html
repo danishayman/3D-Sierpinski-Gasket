@@ -77,23 +77,30 @@
 
     <!-- Panel for parameter customization -->
     <div class="panel vertical-align">
-      <!-- Slider for number of subdivision -->
-      <div class="param-panel horizontal-align">
-        <div class="slider">
-          No. of Subdivision
-          <br />1<input
-            class="slide"
-            id="subdiv-slider"
-            type="range"
-            min="1"
-            max="5"
-            value="3"
-          />5
-        </div>
-        <div class="textbox">
-          <p id="subdiv-text">3</p>
-        </div>
-      </div>
+		Number of Subdivision
+		<div class="iteration">
+		  <label>
+			<input type="radio" name="subdiv" value="1" id="subdiv-1" checked>
+			<span>1</span>
+		  </label>
+		  <label>
+			<input type="radio" name="subdiv" value="2" id="subdiv-2">
+			<span>2</span>
+		  </label>
+		  <label>
+			<input type="radio" name="subdiv" value="3" id="subdiv-3">
+			<span>3</span>
+		  </label>
+		  <label>
+			<input type="radio" name="subdiv" value="4" id="subdiv-4">
+			<span>4</span>
+		  </label>
+		  <label>
+			<input type="radio" name="subdiv" value="5" id="subdiv-5">
+			<span>5</span>
+		  </label>
+		  <span class="selection"></span>
+		</div>
 
       <!-- Slider for animation loop count -->
       <div class="param-panel horizontal-align">

@@ -99,19 +99,75 @@ body {
 	margin-bottom: 10px;
 }
 
-.slider
-{
-	margin-top: 5px;
-	font-weight: bold;
-	font-size: large;
-	color: black;
-}
-
-.slider .slide
-{
-	width: 120px;
-	padding-top: 10px;
-}
+.iteration input {
+	display: none;
+  }
+  
+  .iteration {
+	--container_width: 300px;
+	position: relative;
+	display: flex;
+	align-items: center;
+	border-radius: 9999px;
+	background-color: #fff;
+	color: #000000;
+	width: var(--container_width);
+	overflow: hidden;
+	border: 1px solid rgba(53, 52, 52, 0.226);
+  }
+  
+  .iteration label {
+	width: 100%;
+	padding: 10px;
+	cursor: pointer;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	z-index: 1;
+	font-weight: 600;
+	letter-spacing: -1px;
+	font-size: 14px;
+  }
+  
+  .selection {
+	display: none;
+	position: absolute;
+	height: 100%;
+	width: calc(var(--container_width) / 5); /* Adjusted for 5 options */
+	z-index: 0;
+	left: 0;
+	top: 0;
+	transition: .15s ease;
+  }
+  
+  .iteration label:has(input:checked) {
+	color: #fff;
+  }
+  
+  .iteration label:has(input:checked) ~ .selection {
+	background-color: rgb(11 117 223);
+	display: inline-block;
+  }
+  
+  .iteration label:nth-child(1):has(input:checked) ~ .selection {
+	transform: translateX(calc(var(--container_width) * 0/5));
+  }
+  
+  .iteration label:nth-child(2):has(input:checked) ~ .selection {
+	transform: translateX(calc(var(--container_width) * 1/5));
+  }
+  
+  .iteration label:nth-child(3):has(input:checked) ~ .selection {
+	transform: translateX(calc(var(--container_width) * 2/5));
+  }
+  
+  .iteration label:nth-child(4):has(input:checked) ~ .selection {
+	transform: translateX(calc(var(--container_width) * 3/5));
+  }
+  
+  .iteration label:nth-child(5):has(input:checked) ~ .selection { /* Added for the 5th option */
+	transform: translateX(calc(var(--container_width) * 4/5));
+  }
 
 
 .animation-options {
