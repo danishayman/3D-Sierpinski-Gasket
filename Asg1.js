@@ -63,9 +63,27 @@ window.onload = function init()
 }
 
 // Retrieve all elements from HTML and store in the corresponding variables
-function getUIElement()
-{
+function getUIElement() {
     canvas = document.getElementById("gl-canvas");
+
+    const radioButtons = document.querySelectorAll('input[name="subdiv"]');
+
+    function updateScene(subdivValue) {
+        const numSubdivs = parseInt(subdivValue);
+        subdivNum = numSubdivs;
+        recompute();
+    }
+
+    radioButtons.forEach(radioButton => {
+        radioButton.addEventListener('change', () => {
+            const selectedSubdiv = document.querySelector('input[name="subdiv"]:checked').value;
+            updateScene(selectedSubdiv);
+        });
+    });
+
+    const initialSubdiv = document.querySelector('input[name="subdiv"]:checked').value;
+    updateScene(initialSubdiv);
+
     subdivSlider = document.getElementById("subdiv-slider");
     subdivText = document.getElementById("subdiv-text");
     iterSlider = document.getElementById("iter-slider");
@@ -83,10 +101,9 @@ function getUIElement()
     topRightBottomLeft = document.getElementById("top-right-bottom-left");
     rotateXAxis = document.getElementById("rotate-x-axis");
     rotateYAxis = document.getElementById("rotate-y-axis");
-    noTexture = document.getElementById("no-texture");
     textureOverlay = document.getElementById("texture-overlay");
 	
-    subdivSlider.onchange = function(event) 
+    subdivSlider = function(event) 
 	{
 		subdivNum = event.target.value;
 		subdivText.innerHTML = subdivNum;
