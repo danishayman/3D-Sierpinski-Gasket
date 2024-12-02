@@ -179,6 +179,7 @@ body {
 	font-weight: bold;
 	font-size: 18px;
 	color: black;
+
   }
   
   .checkbox-wrapper-46 input[type="checkbox"] {
@@ -197,6 +198,8 @@ body {
 	display: inline-block;
 	vertical-align: middle;
 	transform: translate3d(0, 0, 0);
+	margin-top: 10px;
+
   }
   
   .checkbox-wrapper-46 .cbx span:first-child {
