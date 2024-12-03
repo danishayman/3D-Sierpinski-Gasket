@@ -33,7 +33,7 @@ var baseColors = [
     vec4(1.0, 0.2, 0.4, 1.0),
     vec4(0.0, 0.9, 1.0, 1.0),
     vec4(0.2, 0.2, 0.5, 1.0),
-    vec4(0.0, 0.0, 0.0, 1.0)
+    vec4(1.0, 0.647, 0.0, 1.0)
 ];
 
 // Define texture coordinates for texture mapping onto a shape or surface
