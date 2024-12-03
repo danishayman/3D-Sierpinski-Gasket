@@ -200,6 +200,7 @@ function getUIElement() {
                 startBtn.innerHTML = "Stop";
                 startBtn.value = "Stop";
                 disableUI();
+                iterTemp = 0;
                 animUpdate();
             }
         }
