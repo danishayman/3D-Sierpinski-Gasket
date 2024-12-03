@@ -335,7 +335,7 @@ body {
     margin: 40px 0px 5px 0px;
     width: 270px;
     height: 70px;
-    background: #0A97B0; /* Initial color, you can change this */
+    background: #0A97B0; 
     border: 5px solid #2A3335;
     border-radius: 10px;
     color: #ffffff;
@@ -343,12 +343,12 @@ body {
     font-weight: bold;
     font-size: 27px;
     outline: none;
-    transition: background-color 0.3s ease; /* Add a smooth transition */
+    transition: all 0.3s ease; 
 }
 
 #start-btn:hover {
-    animation: pulse 1s;
-}
+	transform: scale(1.03); 
+  }
 
 #start-btn:active {
     background-color: #21ff94;
@@ -375,17 +375,7 @@ body {
     background-color: #0A5EB0; 
 }
 
-@keyframes pulse {
-	0% {
-	  transform: scale(1);
-	}
-	50% {
-	  transform: scale(1.05); 
-	}
-	100% {
-	  transform: scale(1);
-	}
-  }
+
 
 
 .texture-option {
