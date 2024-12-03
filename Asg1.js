@@ -191,6 +191,7 @@ function getUIElement() {
                 resetValue(); 
                 configWebGL(); // Reconfigure WebGL to update the initial state
                 render();     // Render the initial state
+                enableUI();   // Enable the UI elements
                 startBtn.innerHTML = "Start"; 
             } else { // Start state
                 animFlag = true;
