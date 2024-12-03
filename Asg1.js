@@ -312,6 +312,11 @@ function animUpdate()
         window.cancelAnimationFrame(animFrame);
         enableUI();
         animFlag = false;
+
+        // Reset button to "Start" state
+        startBtn.innerHTML = "Start";
+        startBtn.value = "Start";
+        
         return; // break the self-repeating loop
     }
 
