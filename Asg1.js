@@ -104,7 +104,21 @@ function getUIElement() {
     updateIterations(initialIter);
 
 
-    
+    // Get the "Add Texture" checkbox
+    textureToggle = document.getElementById("texture-toggle"); 
+
+    // Add an event listener to the checkbox
+    textureToggle.addEventListener('change', function() {
+        if (this.checked) {
+            configureTexture(tex2); // Apply texture when checked
+        } else {
+            configureTexture(tex1); // Remove texture when unchecked
+        }
+        recompute();
+    });
+
+
+
 
     subdivSlider = document.getElementById("subdiv-slider");
     subdivText = document.getElementById("subdiv-text");
@@ -117,12 +131,13 @@ function getUIElement() {
     speedDropdown = document.getElementById("speed-dropdown");
     speedText = document.getElementById("speed-text");
     startBtn = document.getElementById("start-btn");
+    textureToggle = document.getElementById("texture-toggle");
 
     topLeftBottomRight = document.getElementById("top-left-bottom-right");
     topRightBottomLeft = document.getElementById("top-right-bottom-left");
     rotateXAxis = document.getElementById("rotate-x-axis");
     rotateYAxis = document.getElementById("rotate-y-axis");
-    textureOverlay = document.getElementById("texture-overlay");
+
 
     subdivisionPanel = document.getElementById("subdivision-panel");
 	
@@ -139,7 +154,8 @@ function getUIElement() {
 		iterText.innerHTML = iterNum;
         recompute();
     };
-    checkTex1.onchange = function() 
+
+    checkTex1 = function() 
 	{
 		if(checkTex1.checked)
         {
@@ -148,7 +164,7 @@ function getUIElement() {
         }
     };
 
-    checkTex2.onchange = function() 
+    checkTex2 = function() 
 	{
 		if(checkTex2.checked)
         {
@@ -574,6 +590,8 @@ function disableUI()
     topRightBottomLeft.disabled = true;
     rotateXAxis.disabled = true;
     rotateYAxis.disabled = true;
+    speedDropdown.disabled = true;
+    textureToggle.disabled = true;
 
     // Disable radio buttons in subdivision panel
     const subdivisionRadios = document.querySelectorAll(".panel input[type='radio']");
@@ -601,6 +619,8 @@ function enableUI()
     topRightBottomLeft.disabled = false;
     rotateXAxis.disabled = false;
     rotateYAxis.disabled = false;
+    speedDropdown.disabled = false;
+    textureToggle.disabled = false;
 
 
     // Enable radio buttons in subdivision panel

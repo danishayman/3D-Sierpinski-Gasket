@@ -1,218 +1,223 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<title>CPC354 Assignment 1</title>
+<head>
+	<meta charset="utf-8" />
+	<title>CPC354 Assignment 1</title>
 
-		<!-- Link CSS, JS, and WebGL -->
-		<!-- webgl-utils.js	: standard utilities from Google to set up a WebGL context -->
-		<!-- initShaders.js	: contains helper functions to compile and link WebGL shaders to the application -->
-		<!-- MV.js			: provides matrix and vector manipulation functions APIs for WebGL -->
-		<!-- DemoJS.js		: your JS file -->
-		<!-- DemoCSS.css	: your CSS file -->
-		<script type="text/javascript" src="Common/webgl-utils.js"></script>
-		<script type="text/javascript" src="Common/initShaders.js"></script>
-		<script type="text/javascript" src="Common/MV.js"></script>
-		<script type="text/javascript" src="Asg1.js"></script>
-		<link rel="stylesheet" type="text/css" href="style.css" />
+	<!-- Link CSS, JS, and WebGL -->
+	<!-- webgl-utils.js	: standard utilities from Google to set up a WebGL context -->
+	<!-- initShaders.js	: contains helper functions to compile and link WebGL shaders to the application -->
+	<!-- MV.js			: provides matrix and vector manipulation functions APIs for WebGL -->
+	<!-- DemoJS.js		: your JS file -->
+	<!-- DemoCSS.css	: your CSS file -->
+	<script type="text/javascript" src="Common/webgl-utils.js"></script>
+	<script type="text/javascript" src="Common/initShaders.js"></script>
+	<script type="text/javascript" src="Common/MV.js"></script>
+	<script type="text/javascript" src="Asg1.js"></script>
+	<link rel="stylesheet" type="text/css" href="style.css" />
 
-		<!-- Define the vertex shader -->
-		<script id="vertex-shader" type="x-shader/x-vertex">
-			// Declare the global variable(s) for draw calls
-			uniform mat4 projectionMatrix;
-			uniform mat4 modelViewMatrix;
+	<!-- Define the vertex shader -->
+	<script id="vertex-shader" type="x-shader/x-vertex">
+		// Declare the global variable(s) for draw calls
+		uniform mat4 projectionMatrix;
+		uniform mat4 modelViewMatrix;
 
-			// Declare the input variable(s) to receive per-vertex data from the application
-			attribute vec4 vPosition;
-			attribute vec4 vColor;
-			attribute vec2 vTexCoord;
+		// Declare the input variable(s) to receive per-vertex data from the application
+		attribute vec4 vPosition;
+		attribute vec4 vColor;
+		attribute vec2 vTexCoord;
 
-			// Declare the varying variable(s) to pass data to the fragment shader
-			varying vec4 fColor;
-			varying vec2 fTexCoord;
+		// Declare the varying variable(s) to pass data to the fragment shader
+		varying vec4 fColor;
+		varying vec2 fTexCoord;
 
-			void main()
-			{
-				gl_Position = projectionMatrix * modelViewMatrix * vPosition;
-				fColor = vColor;
-				fTexCoord = vTexCoord;
-			}
-		</script>
+		void main()
+		{
+			gl_Position = projectionMatrix * modelViewMatrix * vPosition;
+			fColor = vColor;
+			fTexCoord = vTexCoord;
+		}
+	</script>
 
-		<!-- Define the fragment shader -->
-		<script id="fragment-shader" type="x-shader/x-fragment">
-			precision mediump float;
-			varying vec4 fColor;
-			varying vec2 fTexCoord;
-			uniform sampler2D texture;
+	<!-- Define the fragment shader -->
+	<script id="fragment-shader" type="x-shader/x-fragment">
+		precision mediump float;
+		varying vec4 fColor;
+		varying vec2 fTexCoord;
+		uniform sampler2D texture;
 
-			void main()
-			{
-				gl_FragColor = fColor * texture2D(texture, fTexCoord);
-			}
-		</script>
-	</head>
+		void main()
+		{
+			gl_FragColor = fColor * texture2D(texture, fTexCoord);
+		}
+	</script>
+</head>
 
-	<body>
-		<!-- Canvas for the graphic rendering -->
-		<div class="canvas">
-			<canvas id="gl-canvas" width="1280" height="720">
-				Error: your browser doesn't support the HTML5 canvas element
-			</canvas>
-			<img
-				id="notexture"
-				src="https://i.postimg.cc/kMKrJd9B/BG001.jpg"
-				alt="notexture"
-				crossorigin="anonymous"
-				hidden
-			/>
-			<img
-				id="texture"
-				src="https://i.postimg.cc/15ppPZHR/BG003.jpg"
-				alt="texture"
-				crossorigin="anonymous"
-				hidden
-			/>
+<body>
+	<!-- Canvas for the graphic rendering -->
+	<div class="canvas">
+		<canvas id="gl-canvas" width="1280" height="720">
+			Error: your browser doesn't support the HTML5 canvas element
+		</canvas>
+		<img
+			id="notexture"
+			src="https://i.postimg.cc/kMKrJd9B/BG001.jpg"
+			alt="notexture"
+			crossorigin="anonymous"
+			hidden
+		/>
+		<img
+			id="texture"
+			src="https://i.postimg.cc/15ppPZHR/BG003.jpg"
+			alt="texture"
+			crossorigin="anonymous"
+			hidden
+		/>
+	</div>
+
+	<!-- Panel for parameter customization -->
+	<div class="panel vertical-align">
+		Number of Subdivision
+		<div class="radio-selector">
+			<label>
+				<input type="radio" name="subdiv" value="1" id="subdiv-1" checked />
+				<span>1</span>
+			</label>
+			<label>
+				<input type="radio" name="subdiv" value="2" id="subdiv-2" />
+				<span>2</span>
+			</label>
+			<label>
+				<input type="radio" name="subdiv" value="3" id="subdiv-3" />
+				<span>3</span>
+			</label>
+			<label>
+				<input type="radio" name="subdiv" value="4" id="subdiv-4" />
+				<span>4</span>
+			</label>
+			<label>
+				<input type="radio" name="subdiv" value="5" id="subdiv-5" />
+				<span>5</span>
+			</label>
+			<span class="selection"></span>
 		</div>
 
-		<!-- Panel for parameter customization -->
-		<div class="panel vertical-align">
-			Number of Subdivision
+		<!-- Slider for animation loop count -->
+		<div class="param vertical-align">
+			Number of Iteration
 			<div class="radio-selector">
 				<label>
-					<input type="radio" name="subdiv" value="1" id="subdiv-1" checked />
+					<input type="radio" name="iter" value="1" id="iter-1" checked />
 					<span>1</span>
 				</label>
 				<label>
-					<input type="radio" name="subdiv" value="2" id="subdiv-2" />
+					<input type="radio" name="iter" value="2" id="iter-2" />
 					<span>2</span>
 				</label>
 				<label>
-					<input type="radio" name="subdiv" value="3" id="subdiv-3" />
+					<input type="radio" name="iter" value="3" id="iter-3" />
 					<span>3</span>
 				</label>
 				<label>
-					<input type="radio" name="subdiv" value="4" id="subdiv-4" />
+					<input type="radio" name="iter" value="4" id="iter-4" />
 					<span>4</span>
 				</label>
 				<label>
-					<input type="radio" name="subdiv" value="5" id="subdiv-5" />
+					<input type="radio" name="iter" value="5" id="iter-5" />
 					<span>5</span>
 				</label>
 				<span class="selection"></span>
 			</div>
 
-			<!-- Slider for animation loop count -->
-			<div class="param vertical-align">
-				Number of Iteration
-				<div class="radio-selector">
-					<label>
-						<input type="radio" name="iter" value="1" id="iter-1" checked />
-						<span>1</span>
-					</label>
-					<label>
-						<input type="radio" name="iter" value="2" id="iter-2" />
-						<span>2</span>
-					</label>
-					<label>
-						<input type="radio" name="iter" value="3" id="iter-3" />
-						<span>3</span>
-					</label>
-					<label>
-						<input type="radio" name="iter" value="4" id="iter-4" />
-						<span>4</span>
-					</label>
-					<label>
-						<input type="radio" name="iter" value="5" id="iter-5" />
-						<span>5</span>
-					</label>
-					<span class="selection"></span>
+			<!-- Dropbox for Speed  -->
+			<div class="param-panel horizontal-align">
+				<div class="speed">
+					Animation Speed
+					<select id="speed-dropdown">
+						<option value="0.25">x0.25</option>
+						<option value="0.5">x0.5</option>
+						<option value="1" selected>x1</option>
+						<option value="2">x2</option>
+						<option value="5">x5</option>
+					</select>
 				</div>
-
-				<!-- Dropbox for Speed  -->
-				<div class="param-panel horizontal-align">
-					<div class="speed">
-						Animation Speed
-						<select id="speed-dropdown">
-							<option value="0.25">x0.25</option>
-							<option value="0.5">x0.5</option>
-							<option value="1" selected>x1</option>
-							<option value="2">x2</option>
-							<option value="5">x5</option>
-						</select>
-					</div>
-					<div class="textbox">
-						<p id="speed-text">1</p>
-					</div>
+				<div class="textbox">
+					<p id="speed-text">1</p>
 				</div>
+			</div>
 
-				<!-- UI Section for Additional Animation -->
-				<div id="param vertical-align">
-					<div class="animation-options">
-						<legend>Additional Animations</legend>
+			<!-- UI Section for Additional Animation -->
+			<div id="param vertical-align">
+				<div class="animation-options">
+					<legend>Additional Animations</legend>
 
-						<div class="checkbox-wrapper-46">
-							<input type="checkbox" id="rotate-x-axis" class="inp-cbx" />
-							<label for="rotate-x-axis" class="cbx">
-								<span>
-									<svg viewBox="0 0 12 10" height="10px" width="12px">
-										<polyline points="1.5 6 4.5 9 10.5 1"></polyline>
-									</svg>
-								</span>
-								<span>Rotate x-Axis</span>
-							</label>
-						</div>
-
-						<div class="checkbox-wrapper-46">
-							<input type="checkbox" id="rotate-y-axis" class="inp-cbx" />
-							<label for="rotate-y-axis" class="cbx">
-								<span>
-									<svg viewBox="0 0 12 10" height="10px" width="12px">
-										<polyline points="1.5 6 4.5 9 10.5 1"></polyline>
-									</svg>
-								</span>
-								<span>Rotate y-Axis</span>
-							</label>
-						</div>
-
-						<div class="checkbox-wrapper-46">
-							<input type="checkbox" id="top-left-bottom-right" class="inp-cbx" />
-							<label for="top-left-bottom-right" class="cbx">
-								<span>
-									<svg viewBox="0 0 12 10" height="10px" width="12px">
-										<polyline points="1.5 6 4.5 9 10.5 1"></polyline>
-									</svg>
-								</span>
-								<span>Top Right - Bottom Left</span>
-							</label>
-						</div>
-
-						<div class="checkbox-wrapper-46">
-							<input type="checkbox" id="top-right-bottom-left" class="inp-cbx" />
-							<label for="top-right-bottom-left" class="cbx">
-								<span>
-									<svg viewBox="0 0 12 10" height="10px" width="12px">
-										<polyline points="1.5 6 4.5 9 10.5 1"></polyline>
-									</svg>
-								</span>
-								<span>Top Left - Bottom Right</span>
-							</label>
-						</div>
+					<div class="checkbox-wrapper-46">
+						<input type="checkbox" id="rotate-x-axis" class="inp-cbx" />
+						<label for="rotate-x-axis" class="cbx">
+							<span>
+								<svg viewBox="0 0 12 10" height="10px" width="12px">
+									<polyline points="1.5 6 4.5 9 10.5 1"></polyline>
+								</svg>
+							</span>
+							<span>Rotate x-Axis</span>
+						</label>
 					</div>
-				</div>
 
-				<!-- UI Section for Texture -->
-				<div id="param-panel horizontal-align">
-					<div class="animation-options">
-						<legend>Texture</legend>
-						<label><input type="radio" name="texture" id="no-texture" checked /> No Texture</label>
-						<label><input type="radio" name="texture" id="texture-overlay" /> Add Texture</label>
+					<div class="checkbox-wrapper-46">
+						<input type="checkbox" id="rotate-y-axis" class="inp-cbx" />
+						<label for="rotate-y-axis" class="cbx">
+							<span>
+								<svg viewBox="0 0 12 10" height="10px" width="12px">
+									<polyline points="1.5 6 4.5 9 10.5 1"></polyline>
+								</svg>
+							</span>
+							<span>Rotate y-Axis</span>
+						</label>
+					</div>
 
-						<!-- Animation start button -->
-						<input id="start-btn" type="button" value="Start Animation" />
+					<div class="checkbox-wrapper-46">
+						<input type="checkbox" id="top-left-bottom-right" class="inp-cbx" />
+						<label for="top-left-bottom-right" class="cbx">
+							<span>
+								<svg viewBox="0 0 12 10" height="10px" width="12px">
+									<polyline points="1.5 6 4.5 9 10.5 1"></polyline>
+								</svg>
+							</span>
+							<span>Top Right - Bottom Left</span>
+						</label>
+					</div>
+
+					<div class="checkbox-wrapper-46">
+						<input type="checkbox" id="top-right-bottom-left" class="inp-cbx" />
+						<label for="top-right-bottom-left" class="cbx">
+							<span>
+								<svg viewBox="0 0 12 10" height="10px" width="12px">
+									<polyline points="1.5 6 4.5 9 10.5 1"></polyline>
+								</svg>
+							</span>
+							<span>Top Left - Bottom Right</span>
+						</label>
 					</div>
 				</div>
 			</div>
+
+			<!-- UI Section for Texture -->
+			<div id="param-panel" class="vertical-align">
+				<div class="texture-option">
+					<legend>Add Texture</legend>
+					<label class="switch">
+						<input type="checkbox" id="texture-toggle">
+						<span class="slider"></span>
+					</label>
+					<label for="texture-toggle" class="texture-label"></label> 
+				</div>
+			
+				<div class="start-button"> 
+					<input id="start-btn" type="button" value="Start Animation" />
+				</div>
+	
+			</div>
 		</div>
-	</body>
+	</div>
+</body>
 </html>
