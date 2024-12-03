@@ -118,12 +118,13 @@ function getUIElement() {
     speedText = document.getElementById("speed-text");
     startBtn = document.getElementById("start-btn");
 
-	// Add new UI controls
     topLeftBottomRight = document.getElementById("top-left-bottom-right");
     topRightBottomLeft = document.getElementById("top-right-bottom-left");
     rotateXAxis = document.getElementById("rotate-x-axis");
     rotateYAxis = document.getElementById("rotate-y-axis");
     textureOverlay = document.getElementById("texture-overlay");
+
+    subdivisionPanel = document.getElementById("subdivision-panel");
 	
     subdivSlider = function(event) 
 	{
@@ -573,6 +574,19 @@ function disableUI()
     topRightBottomLeft.disabled = true;
     rotateXAxis.disabled = true;
     rotateYAxis.disabled = true;
+
+    // Disable radio buttons in subdivision panel
+    const subdivisionRadios = document.querySelectorAll(".panel input[type='radio']");
+    subdivisionRadios.forEach(radio => {
+        radio.disabled = true;
+    });
+    
+    // Disable radio buttons in iteration panel
+    const iterationRadios = document.querySelectorAll(".param input[type='radio']");
+    iterationRadios.forEach(radio => {
+        radio.disabled = true;
+    });
+
 }
 
 // Enable the UI elements after the animation is completed
@@ -587,6 +601,22 @@ function enableUI()
     topRightBottomLeft.disabled = false;
     rotateXAxis.disabled = false;
     rotateYAxis.disabled = false;
+
+
+    // Enable radio buttons in subdivision panel
+    const subdivisionRadios = document.querySelectorAll(".panel input[type='radio']");
+    subdivisionRadios.forEach(radio => {
+        radio.disabled = false;
+    });
+    
+    // Enable radio buttons in iteration panel
+    const iterationRadios = document.querySelectorAll(".param input[type='radio']");
+    iterationRadios.forEach(radio => {
+        radio.disabled = false;
+    });
+
+
+
 }
 
 // Reset all necessary variables to their default values
