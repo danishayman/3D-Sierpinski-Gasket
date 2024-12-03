@@ -185,6 +185,7 @@ function getUIElement() {
         if (animFlag) { // Animation is running
             animFlag = false;
             startBtn.innerHTML = "Reset";
+            startBtn.value = "Reset";
             window.cancelAnimationFrame(animFrame);
         } else { // Animation is stopped
             if (startBtn.innerHTML === "Reset") { // Reset state
@@ -192,10 +193,12 @@ function getUIElement() {
                 configWebGL(); // Reconfigure WebGL to update the initial state
                 render();     // Render the initial state
                 enableUI();   // Enable the UI elements
-                startBtn.innerHTML = "Start"; 
+                startBtn.innerHTML = "Start";
+                startBtn.value = "Start";
             } else { // Start state
                 animFlag = true;
                 startBtn.innerHTML = "Stop";
+                startBtn.value = "Stop";
                 disableUI();
                 animUpdate();
             }

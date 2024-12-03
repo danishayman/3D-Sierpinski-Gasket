@@ -317,47 +317,76 @@ body {
 }
 
 #start-btn {
+    margin: 40px 0px 5px 0px;
+    width: 270px;
+    height: 70px;
+    background: #34a0a4; /* Initial color, you can change this */
+    border: 5px solid #99d98c;
+    border-radius: 10px;
+    color: #ffffff;
+    text-align: center;
+    font-weight: bold;
+    font-size: 27px;
+    outline: none;
+    transition: background-color 0.3s ease; /* Add a transition for smooth color change */
+}
 
-	margin: 40px 0px 5px 0px;
-	width: 270px;
-	height: 70px;
-	background: #34a0a4;
-	border: 5px solid #99d98c;
-	border-radius: 10px;
-	color: #ffffff;
-	text-align: center;
-	font-weight: bold;
-	font-size: 27px;
-	outline: none;
+#start-btn {
+    margin: 40px 0px 5px 0px;
+    width: 270px;
+    height: 70px;
+    background: #0A97B0; /* Initial color, you can change this */
+    border: 5px solid #2A3335;
+    border-radius: 10px;
+    color: #ffffff;
+    text-align: center;
+    font-weight: bold;
+    font-size: 27px;
+    outline: none;
+    transition: background-color 0.3s ease; /* Add a smooth transition */
 }
 
 #start-btn:hover {
-	animation: bounce 1s;
+    animation: pulse 1s;
 }
 
 #start-btn:active {
-	background-color: #21ff94;
-	box-shadow: 0 2px #666666;
-	transform: translateY(2px);
+    background-color: #21ff94;
+    box-shadow: 0 2px #666666;
+    transform: translateY(2px);
 }
 
 #start-btn:disabled {
-	animation: none;
-	pointer-events: none;
-	opacity: 0.5;
+    animation: none;
+    pointer-events: none;
+    opacity: 0.5;
 }
 
-@keyframes bounce {
-	0%, 20%, 60%, 100% {
-		transform: translateY(0);
-	}
-	40% {
-		transform: translateY(-10px);
-	}
-	80% {
-		transform: translateY(-5px);
-	}
+
+#start-btn[value="Start"] { 
+    background-color: #0A97B0; 
 }
+
+#start-btn[value="Stop"] { 
+    background-color: rgb(219, 0, 0); 
+}
+
+#start-btn[value="Reset"] { 
+    background-color: #0A5EB0; 
+}
+
+@keyframes pulse {
+	0% {
+	  transform: scale(1);
+	}
+	50% {
+	  transform: scale(1.05); 
+	}
+	100% {
+	  transform: scale(1);
+	}
+  }
+
 
 .texture-option {
 	display: flex;
