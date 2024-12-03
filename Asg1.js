@@ -569,6 +569,10 @@ function disableUI()
     checkTex1.disabled = true;
     checkTex2.disabled = true;
     startBtn.disabled = true;
+    topLeftBottomRight.disabled = true;
+    topRightBottomLeft.disabled = true;
+    rotateXAxis.disabled = true;
+    rotateYAxis.disabled = true;
 }
 
 // Enable the UI elements after the animation is completed
@@ -579,6 +583,10 @@ function enableUI()
     checkTex1.disabled = false;
     checkTex2.disabled = false;
     startBtn.disabled = false;
+    topLeftBottomRight.disabled = false;
+    topRightBottomLeft.disabled = false;
+    rotateXAxis.disabled = false;
+    rotateYAxis.disabled = false;
 }
 
 // Reset all necessary variables to their default values
