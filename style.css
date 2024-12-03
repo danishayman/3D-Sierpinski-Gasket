@@ -6,72 +6,57 @@ body {
 	display: flex;
 	align-items: center;
 	justify-content: center;
-  
+
 	--s: 100px; /* control the size */
 	--c1: #FFCFEF;
 	--c2: #2A3335;
-  
+
 	--_g: var(--c2) 4% 14%, var(--c1) 14% 24%, var(--c2) 22% 34%,
-	  var(--c1) 34% 44%, var(--c2) 44% 56%, var(--c1) 56% 66%, var(--c2) 66% 76%,
-	  var(--c1) 76% 86%, var(--c2) 86% 96%;
+		var(--c1) 34% 44%, var(--c2) 44% 56%, var(--c1) 56% 66%, var(--c2) 66% 76%,
+		var(--c1) 76% 86%, var(--c2) 86% 96%;
 	background: radial-gradient(
-		100% 100% at 100% 0,
-		var(--c1) 4%,
-		var(--_g),
-		#0008 96%,
-		#0000
-	  ),
-	  radial-gradient(
-		  100% 100% at 0 100%,
-		  #0000,
-		  #0008 4%,
-		  var(--_g),
-		  var(--c1) 96%
+			100% 100% at 100% 0,
+			var(--c1) 4%,
+			var(--_g),
+			#0008 96%,
+			#0000
+		),
+		radial-gradient(
+			100% 100% at 0 100%,
+			#0000,
+			#0008 4%,
+			var(--_g),
+			var(--c1) 96%
 		)
 		var(--c1);
 	background-size: var(--s) var(--s);
-  }
-  
-  
+}
 
-.canvas
-{
+.canvas {
 	background: #fff;
 	line-height: 30px;
 	font-weight: bold;
 	color: #009688;
 	padding: 25px;
-	box-shadow:
-	  inset #009688 0 0 0 5px, 
-    inset #059c8e 0 0 0 1px, 
-    inset #0cab9c 0 0 0 10px, 
-    inset #1fbdae 0 0 0 11px, 
-    inset #8ce9ff 0 0 0 16px, 
-    inset #48e4d6 0 0 0 17px, 
-    inset #e5f9f7 0 0 0 21px, 
-    inset #bfecf7 0 0 0 22px;
+	box-shadow: inset #009688 0 0 0 5px, inset #059c8e 0 0 0 1px, inset #0cab9c 0 0 0 10px, inset #1fbdae 0 0 0 11px, inset #8ce9ff 0 0 0 16px, inset #48e4d6 0 0 0 17px, inset #e5f9f7 0 0 0 21px, inset #bfecf7 0 0 0 22px;
 	text-shadow: 3px 3px 1px #bfecf7;
 }
 
-.horizontal-align
-{
+.horizontal-align {
 	display: flex;
 	flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
+	align-items: center;
+	justify-content: space-between;
 }
 
-.vertical-align
-{
+.vertical-align {
 	display: flex;
 	flex-direction: column;
-    align-items: center;
-    justify-content: center;
+	align-items: center;
+	justify-content: center;
 }
 
-.panel
-{
-
+.panel {
 	font-weight: bold;
 	margin-left: 10px;
 	width: 400px;
@@ -81,25 +66,22 @@ body {
 	background-color: #fdf9f9;
 }
 
-.param-panel
-{
+.param-panel {
 	font-weight: bold;
 	width: 270px;
 	margin: 5px 0 5px 0;
 }
 
-.mg-top-bottom
-{
+.mg-top-bottom {
 	margin-top: 10px;
 	margin-bottom: 10px;
 }
 
 .radio-selector input {
 	display: none;
-  }
-  
-  .radio-selector {
+}
 
+.radio-selector {
 	margin-top: 5px;
 	margin-bottom: 50px;
 	--container_width: 300px;
@@ -112,9 +94,9 @@ body {
 	width: var(--container_width);
 	overflow: hidden;
 	border: 1px solid rgba(53, 52, 52, 0.226);
-  }
-  
-  .radio-selector label {
+}
+
+.radio-selector label {
 	width: 100%;
 	padding: 10px;
 	cursor: pointer;
@@ -125,9 +107,9 @@ body {
 	font-weight: 600;
 	letter-spacing: -1px;
 	font-size: 14px;
-  }
-  
-  .selection {
+}
+
+.selection {
 	display: none;
 	position: absolute;
 	height: 100%;
@@ -136,37 +118,36 @@ body {
 	left: 0;
 	top: 0;
 	transition: .15s ease;
-  }
-  
-  .radio-selector label:has(input:checked) {
+}
+
+.radio-selector label:has(input:checked) {
 	color: #fff;
-  }
-  
-  .radio-selector label:has(input:checked) ~ .selection {
+}
+
+.radio-selector label:has(input:checked) ~ .selection {
 	background-color: #0A5EB0;
 	display: inline-block;
-  }
-  
-  .radio-selector label:nth-child(1):has(input:checked) ~ .selection {
-	transform: translateX(calc(var(--container_width) * 0/5));
-  }
-  
-  .radio-selector label:nth-child(2):has(input:checked) ~ .selection {
-	transform: translateX(calc(var(--container_width) * 1/5));
-  }
-  
-  .radio-selector label:nth-child(3):has(input:checked) ~ .selection {
-	transform: translateX(calc(var(--container_width) * 2/5));
-  }
-  
-  .radio-selector label:nth-child(4):has(input:checked) ~ .selection {
-	transform: translateX(calc(var(--container_width) * 3/5));
-  }
-  
-  .radio-selector label:nth-child(5):has(input:checked) ~ .selection {
-	transform: translateX(calc(var(--container_width) * 4/5));
-  }
+}
 
+.radio-selector label:nth-child(1):has(input:checked) ~ .selection {
+	transform: translateX(calc(var(--container_width) * 0/5));
+}
+
+.radio-selector label:nth-child(2):has(input:checked) ~ .selection {
+	transform: translateX(calc(var(--container_width) * 1/5));
+}
+
+.radio-selector label:nth-child(3):has(input:checked) ~ .selection {
+	transform: translateX(calc(var(--container_width) * 2/5));
+}
+
+.radio-selector label:nth-child(4):has(input:checked) ~ .selection {
+	transform: translateX(calc(var(--container_width) * 3/5));
+}
+
+.radio-selector label:nth-child(5):has(input:checked) ~ .selection {
+	transform: translateX(calc(var(--container_width) * 4/5));
+}
 
 .animation-options {
 	display: flex;
@@ -179,30 +160,28 @@ body {
 	font-weight: bold;
 	font-size: 18px;
 	color: black;
+}
 
-  }
-  
-  .checkbox-wrapper-46 input[type="checkbox"] {
+.checkbox-wrapper-46 input[type="checkbox"] {
 	display: none;
 	visibility: hidden;
-  }
-  
-  .checkbox-wrapper-46 .cbx {
+}
+
+.checkbox-wrapper-46 .cbx {
 	margin: auto;
 	-webkit-user-select: none;
 	user-select: none;
 	cursor: pointer;
-  }
-  
-  .checkbox-wrapper-46 .cbx span {
+}
+
+.checkbox-wrapper-46 .cbx span {
 	display: inline-block;
 	vertical-align: middle;
 	transform: translate3d(0, 0, 0);
 	margin-top: 10px;
+}
 
-  }
-  
-  .checkbox-wrapper-46 .cbx span:first-child {
+.checkbox-wrapper-46 .cbx span:first-child {
 	position: relative;
 	width: 18px;
 	height: 18px;
@@ -211,9 +190,9 @@ body {
 	vertical-align: middle;
 	border: 1px solid #000000;
 	transition: all 0.2s ease;
-  }
-  
-  .checkbox-wrapper-46 .cbx span:first-child svg {
+}
+
+.checkbox-wrapper-46 .cbx span:first-child svg {
 	position: absolute;
 	top: 3px;
 	left: 2px;
@@ -227,9 +206,9 @@ body {
 	transition: all 0.3s ease;
 	transition-delay: 0.1s;
 	transform: translate3d(0, 0, 0);
-  }
-  
-  .checkbox-wrapper-46 .cbx span:first-child:before {
+}
+
+.checkbox-wrapper-46 .cbx span:first-child:before {
 	content: "";
 	width: 100%;
 	height: 100%;
@@ -238,41 +217,39 @@ body {
 	transform: scale(0);
 	opacity: 1;
 	border-radius: 50%;
-  }
-  
-  .checkbox-wrapper-46 .cbx span:last-child {
+}
+
+.checkbox-wrapper-46 .cbx span:last-child {
 	padding-left: 8px;
-  }
-  
-  .checkbox-wrapper-46 .cbx:hover span:first-child {
+}
+
+.checkbox-wrapper-46 .cbx:hover span:first-child {
 	border-color: #2A3335;
-  }
-  
-  .checkbox-wrapper-46 .inp-cbx:checked + .cbx span:first-child {
+}
+
+.checkbox-wrapper-46 .inp-cbx:checked + .cbx span:first-child {
 	background: #1231ac;
 	border-color: #1339cf;
 	animation: wave-46 0.4s ease;
-  }
-  
-  .checkbox-wrapper-46 .inp-cbx:checked + .cbx span:first-child svg {
+}
+
+.checkbox-wrapper-46 .inp-cbx:checked + .cbx span:first-child svg {
 	stroke-dashoffset: 0;
-  }
-  
-  .checkbox-wrapper-46 .inp-cbx:checked + .cbx span:first-child:before {
+}
+
+.checkbox-wrapper-46 .inp-cbx:checked + .cbx span:first-child:before {
 	transform: scale(3.5);
 	opacity: 0;
 	transition: all 0.6s ease;
-  }
-  
-  @keyframes wave-46 {
-	50% {
-	  transform: scale(0.9);
-	}
-  }
-  
+}
 
-.speed
-{
+@keyframes wave-46 {
+	50% {
+		transform: scale(0.9);
+	}
+}
+
+.speed {
 	color: black;
 	display: flex;
 	flex-direction: column;
@@ -283,8 +260,7 @@ body {
 	font-size: large;
 }
 
-.textbox
-{
+.textbox {
 	margin-left: 15px;
 	width: 60px;
 	height: 60px;
@@ -293,8 +269,7 @@ body {
 	border-radius: 10px;
 }
 
-.textbox p
-{
+.textbox p {
 	position: relative;
 	color: #ffffff;
 	text-align: center;
@@ -303,8 +278,7 @@ body {
 	line-height: 0.25;
 }
 
-#start-btn
-{
+#start-btn {
 	margin: 15px 0px 5px 0px;
 	width: 270px;
 	height: 70px;
@@ -315,31 +289,33 @@ body {
 	text-align: center;
 	font-weight: bold;
 	font-size: 27px;
-	outline : none;
+	outline: none;
 }
 
-#start-btn:hover
-{
+#start-btn:hover {
 	animation: bounce 1s;
 }
 
-#start-btn:active
-{
-  background-color 	: #21ff94;
-  box-shadow 		: 0 2px #666666;
-  transform 		: translateY(2px);
+#start-btn:active {
+	background-color: #21ff94;
+	box-shadow: 0 2px #666666;
+	transform: translateY(2px);
 }
 
-#start-btn:disabled
-{
-    animation: none;
+#start-btn:disabled {
+	animation: none;
 	pointer-events: none;
 	opacity: 0.5;
 }
 
-@keyframes bounce 
-{
-	0%, 20%, 60%, 100%	{transform: translateY(0);}
-	40% 				{transform: translateY(-10px);}
-	80% 				{transform: translateY(-5px);}
+@keyframes bounce {
+	0%, 20%, 60%, 100% {
+		transform: translateY(0);
+	}
+	40% {
+		transform: translateY(-10px);
+	}
+	80% {
+		transform: translateY(-5px);
+	}
 }
