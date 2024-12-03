@@ -181,13 +181,25 @@ function getUIElement() {
     };
     
 
-    startBtn.onclick = function()
-	{
-		animFlag = true;
-        disableUI();
-        resetValue();
-        animUpdate();
-	};
+    startBtn.onclick = function() {
+        if (animFlag) { // Animation is running
+            animFlag = false;
+            startBtn.innerHTML = "Reset";
+            window.cancelAnimationFrame(animFrame);
+        } else { // Animation is stopped
+            if (startBtn.innerHTML === "Reset") { // Reset state
+                resetValue(); 
+                configWebGL(); // Reconfigure WebGL to update the initial state
+                render();     // Render the initial state
+                startBtn.innerHTML = "Start"; 
+            } else { // Start state
+                animFlag = true;
+                startBtn.innerHTML = "Stop";
+                disableUI();
+                animUpdate();
+            }
+        }
+    };
 }
 
 // Configure WebGL Settings
@@ -585,7 +597,6 @@ function disableUI()
     iterSlider.disabled = true;
     checkTex1.disabled = true;
     checkTex2.disabled = true;
-    startBtn.disabled = true;
     topLeftBottomRight.disabled = true;
     topRightBottomLeft.disabled = true;
     rotateXAxis.disabled = true;
@@ -614,7 +625,6 @@ function enableUI()
     iterSlider.disabled = false;
     checkTex1.disabled = false;
     checkTex2.disabled = false;
-    startBtn.disabled = false;
     topLeftBottomRight.disabled = false;
     topRightBottomLeft.disabled = false;
     rotateXAxis.disabled = false;
