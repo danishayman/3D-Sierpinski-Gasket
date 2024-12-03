@@ -449,3 +449,15 @@ body {
 	bottom: 0;
   }
   
+
+/* Styles for smaller screens (e.g., phones) */
+@media (max-width: 600px) {
+	#start-btn {
+	  font-size: 16px; /* Smaller font size */
+	  padding: 8px 15px; /* Reduced padding */
+	}
+  
+	.container {
+	  grid-template-columns: 1fr; /* Single column layout */
+	}
+  }
