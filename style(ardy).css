@@ -1,0 +1,488 @@
+body {
+	margin: 0;
+	padding: 0;
+	width: 100vw;
+	height: 100vh;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+
+	--s: 100px; /* control the size */
+	--c1: #FFCFEF;
+	--c2: #2A3335;
+
+	--_g: var(--c2) 4% 14%, var(--c1) 14% 24%, var(--c2) 22% 34%,
+		var(--c1) 34% 44%, var(--c2) 44% 56%, var(--c1) 56% 66%, var(--c2) 66% 76%,
+		var(--c1) 76% 86%, var(--c2) 86% 96%;
+	background: radial-gradient(
+			100% 100% at 100% 0,
+			var(--c1) 4%,
+			var(--_g),
+			#0008 96%,
+			#0000
+		),
+		radial-gradient(
+			100% 100% at 0 100%,
+			#0000,
+			#0008 4%,
+			var(--_g),
+			var(--c1) 96%
+		)
+		var(--c1);
+	background-size: var(--s) var(--s);
+}
+
+.canvas {
+	background: #fff;
+	line-height: 30px;
+	font-weight: bold;
+	color: #009688;
+	padding: 25px;
+	box-shadow: inset #009688 0 0 0 5px, inset #059c8e 0 0 0 1px, inset #0cab9c 0 0 0 10px, inset #1fbdae 0 0 0 11px, inset #8ce9ff 0 0 0 16px, inset #48e4d6 0 0 0 17px, inset #e5f9f7 0 0 0 21px, inset #bfecf7 0 0 0 22px;
+	text-shadow: 3px 3px 1px #bfecf7;
+}
+
+.horizontal-align {
+	padding-right: 27px;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.vertical-align {
+	font-size: 20px;
+	font-family: Arial;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+}
+
+.panel {
+	font-weight: bold;
+	margin-left: 10px;
+	width: 400px;
+	height: 720px;
+	border: 10px solid #059c8e;
+	border-radius: 10px;
+	background-color: #fdf9f9;
+}
+
+.param-panel {
+	font-weight: bold;
+	width: 270px;
+	margin: 5px 0 5px 0;
+}
+
+.mg-top-bottom {
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+
+.radio-selector input {
+	display: none;
+}
+
+.radio-selector {
+	margin-top: 0px;
+	margin-bottom: 20px;
+	--container_width: 300px;
+	position: relative;
+	display: flex;
+	align-items: center;
+	border-radius: 9999px;
+	background-color: #fff;
+	color: #000000;
+	width: var(--container_width);
+	overflow: hidden;
+	border: 1px solid rgba(53, 52, 52, 0.226);
+}
+
+.radio-selector label {
+	font-family: Arial;
+	width: 100%;
+	padding: 10px;
+	cursor: pointer;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	z-index: 1;
+	font-weight: bold;
+	letter-spacing: -1px;
+	font-size: 20px;
+}
+
+.selection {
+	display: none;
+	position: absolute;
+	height: 100%;
+	width: calc(var(--container_width) / 5); /* Adjusted for 5 options */
+	z-index: 0;
+	left: 0;
+	top: 0;
+	transition: .15s ease;
+}
+
+.radio-selector label:has(input:checked) {
+	color: #fff;
+}
+
+.radio-selector label:has(input:checked) ~ .selection {
+	background-color: #0A5EB0;
+	display: inline-block;
+}
+
+.radio-selector label:nth-child(1):has(input:checked) ~ .selection {
+	transform: translateX(calc(var(--container_width) * 0/5));
+}
+
+.radio-selector label:nth-child(2):has(input:checked) ~ .selection {
+	transform: translateX(calc(var(--container_width) * 1/5));
+}
+
+.radio-selector label:nth-child(3):has(input:checked) ~ .selection {
+	transform: translateX(calc(var(--container_width) * 2/5));
+}
+
+.radio-selector label:nth-child(4):has(input:checked) ~ .selection {
+	transform: translateX(calc(var(--container_width) * 3/5));
+}
+
+.radio-selector label:nth-child(5):has(input:checked) ~ .selection {
+	transform: translateX(calc(var(--container_width) * 4/5));
+}
+
+.animation-options {
+
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	justify-content: flex-start;
+	width: 300px;
+	margin: 25px 0 20px 0;
+	font-weight: bold;
+	font-size: 20px;
+	color: black;
+}
+
+.checkbox-wrapper-46 input[type="checkbox"] {
+	display: none;
+	visibility: hidden;
+}
+
+.checkbox-wrapper-46 .cbx {
+	margin: auto;
+	-webkit-user-select: none;
+	user-select: none;
+	cursor: pointer;
+}
+
+.checkbox-wrapper-46 .cbx span {
+	display: inline-block;
+	vertical-align: middle;
+	transform: translate3d(0, 0, 0);
+	margin-top: 10px;
+}
+
+.checkbox-wrapper-46 .cbx span:first-child {
+	position: relative;
+	width: 18px;
+	height: 18px;
+	border-radius: 3px;
+	transform: scale(1);
+	vertical-align: middle;
+	border: 1px solid #000000;
+	transition: all 0.2s ease;
+}
+
+.checkbox-wrapper-46 .cbx span:first-child svg {
+	position: absolute;
+	top: 3px;
+	left: 2px;
+	fill: none;
+	stroke: #ffffff;
+	stroke-width: 2;
+	stroke-linecap: round;
+	stroke-linejoin: round;
+	stroke-dasharray: 16px;
+	stroke-dashoffset: 16px;
+	transition: all 0.3s ease;
+	transition-delay: 0.1s;
+	transform: translate3d(0, 0, 0);
+}
+
+.checkbox-wrapper-46 .cbx span:first-child:before {
+	content: "";
+	width: 100%;
+	height: 100%;
+	background: #0A5EB0;
+	display: block;
+	transform: scale(0);
+	opacity: 1;
+	border-radius: 50%;
+}
+
+.checkbox-wrapper-46 .cbx span:last-child {
+	padding-left: 8px;
+}
+
+.checkbox-wrapper-46 .cbx:hover span:first-child {
+	border-color: #2A3335;
+}
+
+.checkbox-wrapper-46 .inp-cbx:checked + .cbx span:first-child {
+	background: #1231ac;
+	border-color: #1339cf;
+	animation: wave-46 0.4s ease;
+}
+
+.checkbox-wrapper-46 .inp-cbx:checked + .cbx span:first-child svg {
+	stroke-dashoffset: 0;
+}
+
+.checkbox-wrapper-46 .inp-cbx:checked + .cbx span:first-child:before {
+	transform: scale(3.5);
+	opacity: 0;
+	transition: all 0.6s ease;
+}
+
+@keyframes wave-46 {
+	50% {
+		transform: scale(0.9);
+	}
+}
+
+.speed {
+	padding-right: 10px;
+	font-family: Arial;
+	font-size: 20px;
+	color: black;
+	margin-bottom: 10px;
+  }
+
+  #speed-dropdown {
+	font-family: Arial;
+	font-size: 20px;
+	color: 2A3335;
+	padding: 5px 10px;
+	margin-left: 0px;
+	margin-top: 10px;
+	border: 1px solid #2A3335; /* Subtle border */
+	border-radius: 10px; 
+	background-color: #fff; 
+	cursor: pointer;
+	transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  #speed-dropdown:hover {
+	border-color: #888; /* Darker border on hover */
+	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Subtle shadow on hover */
+  }
+  
+  #speed-dropdown:focus {
+	border-color: #0A97B0; /* Blue border on focus */
+	box-shadow: 0 0 6px #0A5EB0;/* Highlight effect */
+	outline: none;
+  }
+  
+  .textbox {
+	font-family: Arial;
+	font-size: 20px;
+	color: #2A3335; 
+  }
+  
+  #speed-text {
+	font-weight: bold;
+	font-size: 25px;
+	color: white; 
+  }
+
+.textbox {
+	margin-left: 15px;
+	width: 100px;
+	height: 55px;
+	background: #0A5EB0;
+	border: 3px solid #2A3335;
+	border-radius: 10px;
+}
+
+.textbox p {
+	position: relative;
+	color: #ffffff;
+	text-align: center;
+	font-weight: bold;
+	font-size: 27px;
+	line-height: 0.25;
+}
+
+#start-btn {
+    margin: 40px 0px 5px 0px;
+    width: 270px;
+    height: 70px;
+    background: #34a0a4; /* Initial color, you can change this */
+    border: 5px solid #99d98c;
+    border-radius: 10px;
+    color: #ffffff;
+    text-align: center;
+    font-weight: bold;
+    font-size: 27px;
+    outline: none;
+    transition: background-color 0.3s ease; /* Add a transition for smooth color change */
+}
+
+#start-btn {
+    margin: 40px 0px 5px 0px;
+    width: 270px;
+    height: 70px;
+    background: #0A97B0; 
+    border: 5px solid #2A3335;
+    border-radius: 10px;
+    color: #ffffff;
+    text-align: center;
+    font-weight: bold;
+    font-size: 27px;
+    outline: none;
+    transition: all 0.3s ease; 
+}
+
+#start-btn:hover {
+	transform: scale(1.03); 
+  }
+
+#start-btn:active {
+    background-color: #21ff94;
+    box-shadow: 0 2px #666666;
+    transform: translateY(2px);
+}
+
+#start-btn:disabled {
+    animation: none;
+    pointer-events: none;
+    opacity: 0.5;
+}
+
+
+#start-btn[value="Start"] { 
+    background-color: #0A97B0; 
+}
+
+#start-btn[value="Stop"] { 
+    background-color: rgb(219, 0, 0); 
+}
+
+#start-btn[value="Reset"] { 
+    background-color: #0A5EB0; 
+}
+
+
+
+
+.texture-option {
+	display: flex;
+	text-wrap: nowrap;
+	align-items: center;
+	font-family: Arial;
+	font-size: 20px;
+	margin-right: 5%;
+	margin-top: 10px;
+	padding-right: 80px;
+
+  }
+
+.switch {
+	font-size: 20px;
+	font-family: Arial;
+	position: relative;
+	display: inline-block;
+	width: 3em;
+	height: 1.5em;
+	margin-right: 10px;
+	margin-left: 20px;
+  }
+  
+  /* Hide default HTML checkbox */
+  .switch input {
+	opacity: 0;
+	width: 0;
+	height: 0;
+  }
+  
+  /* The slider */
+  .slider {
+	position: absolute;
+	cursor: pointer;
+	inset: 0;
+	background: #d6ced3;
+	border-radius: 50px;
+	transition: all 0.4s cubic-bezier(0.23, 1, 0.320, 1);
+  }
+  
+  .slider:before {
+	position: absolute;
+	content: "";
+	height: 1em;
+	width: 1em;
+	left: 0.25em;
+	bottom: 0.25em;
+	background-color: white;
+	border-radius: 50px;
+	box-shadow: 0 0px 20px rgba(0, 0, 0, 0.4);
+	transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  }
+
+  .color-picker {
+    width: 50px; /* Adjust the size to your preference */
+    height: 50px;
+    border: 3px solid #2A3335; /* Matches the existing border color theme */
+    border-radius: 10px; /* Rounded corners to match the style */
+    background-color: #ffffff; /* Default white background */
+    cursor: pointer;
+    margin: 10px; /* Add spacing */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.color-picker:hover {
+    transform: scale(1.1); /* Slight zoom on hover */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Stronger shadow */
+}
+
+.color-picker:focus {
+    outline: none; /* Remove default outline */
+    border: 3px solid #0A5EB0; /* Highlight color */
+    box-shadow: 0 0 8px #0A5EB0; /* Glow effect on focus */
+}
+
+  
+  /* When the checkbox is checked, change slider background color */
+  .switch input:checked + .slider {
+	background: #0A5EB0;
+  }
+  
+  /* Add focus effect when checkbox is focused */
+  .switch input:focus + .slider {
+	box-shadow: 0 0 1px #0A5EB0;
+  }
+  
+  /* When checkbox is checked, move the slider and increase size */
+  .switch input:checked + .slider:before {
+	transform: translateX(1.6em);
+	width: 1.5em;
+	height: 1.5em;
+	bottom: 0;
+  }
+  
+
+/* Styles for smaller screens (e.g., phones) */
+@media (max-width: 600px) {
+	#start-btn {
+	  font-size: 16px; /* Smaller font size */
+	  padding: 8px 15px; /* Reduced padding */
+	}
+  
+	.container {
+	  grid-template-columns: 1fr; /* Single column layout */
+	}
+  }
+  
