@@ -14,7 +14,6 @@ This project is an interactive WebGL application that renders a 3D Sierpinski Ga
 - **Texture:** Apply a texture to the gasket.
 - **Animation Speed:** Control the speed of the animation.
 - **Interactive Controls:**  Start, stop, and reset the animation.
-- **Mobile Friendly:**  Designed to work on various screen sizes.
 
 ## How to Run
 
