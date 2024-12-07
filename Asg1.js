@@ -626,6 +626,12 @@ function disableUI()
         radio.disabled = true;
     });
 
+    // Disable color pickers
+    const colorInputs = document.querySelectorAll('.colorPickers input[type="color"]');
+    colorInputs.forEach(input => {
+        input.disabled = true;
+    });
+
 }
 
 // Enable the UI elements after the animation is completed
@@ -653,6 +659,12 @@ function enableUI()
     const iterationRadios = document.querySelectorAll(".param input[type='radio']");
     iterationRadios.forEach(radio => {
         radio.disabled = false;
+    });
+
+    // Enable color pickers
+    const colorInputs = document.querySelectorAll('.colorPickers input[type="color"]');
+    colorInputs.forEach(input => {
+        input.disabled = false;
     });
 
 
