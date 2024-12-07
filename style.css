@@ -164,6 +164,7 @@ body {
 	font-weight: bold;
 	font-size: 20px;
 	color: black;
+	margin-top: 10px;
 }
 
 .checkbox-wrapper-46 input[type="checkbox"] {
@@ -320,7 +321,7 @@ body {
     margin: 40px 0px 5px 0px;
     width: 270px;
     height: 70px;
-    background: #34a0a4; /* Initial color, you can change this */
+    background: #34a0a4;
     border: 5px solid #99d98c;
     border-radius: 10px;
     color: #ffffff;
@@ -328,7 +329,7 @@ body {
     font-weight: bold;
     font-size: 27px;
     outline: none;
-    transition: background-color 0.3s ease; /* Add a transition for smooth color change */
+    transition: background-color 0.3s ease;
 }
 
 #start-btn {
@@ -385,7 +386,7 @@ body {
 	font-family: Arial;
 	font-size: 20px;
 	margin-right: 5%;
-	margin-top: 10px;
+	margin-top: 20px;
 	padding-right: 80px;
 
   }
@@ -408,7 +409,6 @@ body {
 	height: 0;
   }
   
-  /* The slider */
   .slider {
 	position: absolute;
 	cursor: pointer;
@@ -486,3 +486,43 @@ body {
 	}
   }
   
+  .colorPickers {
+	display: grid;
+	grid-template-columns: repeat(2, 1fr); /* Two equal-width columns */
+	gap: 15px 30px; /* Vertical gap of 15px and horizontal gap of 30px */
+	align-items: center;
+	margin-top: 10px;
+  }
+  
+  .colorItem {
+	display: flex;
+	align-items: center;
+  }
+  
+  .colorItem label {
+	min-width: 70px; /* Consistent width for labels */
+	margin-right: 10px;
+	text-align: right;
+  }
+  
+  .colorItem input[type="color"] {
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+	width: 50px;
+	height: 30px;
+	border: 2px solid #2A3335;
+	padding: 0;
+	cursor: pointer;
+	border-radius: 10px;
+  }
+  
+  /* Optional: Style the color picker's "thumb" */
+  .colorItem input[type="color"]::-webkit-color-swatch-wrapper {
+	padding: 0;
+  }
+  
+  .colorItem input[type="color"]::-webkit-color-swatch {
+	border: none;
+	border-radius: 5px;
+  }

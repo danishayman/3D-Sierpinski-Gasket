@@ -32,10 +32,10 @@ var vertices = [
 
 // Different colors for a tetrahedron (RGBA)
 var baseColors = [
-    vec4(0.07059, 0.80784, 0.99216, 1.0),
-    vec4(0.03922, 0.50588, 1.0, 1.0),
-    vec4(0.0, 1.0, 0.53333, 1.0),
-    vec4(1.0, 1.0, 0.0, 1.0)
+    vec4(1.0, 0.2, 0.4, 1.0),
+    vec4(0.0, 0.9, 1.0, 1.0),
+    vec4(0.2, 0.2, 0.5, 1.0),
+    vec4(1.0, 0.6, 0.0, 1.0)
 ];
 
 // Define texture coordinates for texture mapping onto a shape or surface
