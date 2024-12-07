@@ -594,6 +594,10 @@ function disableUI() {
   colorInputs.forEach((input) => {
     input.disabled = true;
   });
+
+  //Disable background color picker
+  const colorPicker = document.getElementById("background-color-picker");
+  colorPicker.disabled = true;
 }
 
 // Enable the UI elements after the animation is completed
@@ -632,6 +636,10 @@ function enableUI() {
   colorInputs.forEach((input) => {
     input.disabled = false;
   });
+
+  //Enable background color picker
+  const colorPicker = document.getElementById("background-color-picker");
+  colorPicker.disabled = false;
 }
 
 // Reset all necessary variables to their default values
