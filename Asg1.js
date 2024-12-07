@@ -228,7 +228,6 @@ function configWebGL() {
 
   // Set up viewport and shaders
   gl.viewport(0, 0, canvas.width, canvas.height);
-  gl.clearColor(1.0, 0.2, 0.4, 1.0);
   gl.enable(gl.DEPTH_TEST);
 
   program = initShaders(gl, "vertex-shader", "fragment-shader");
