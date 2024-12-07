@@ -97,7 +97,7 @@ body {
   color: #000000;
   width: var(--container_width);
   overflow: hidden;
-  border: 1px solid #2A3335;
+  border: 1px solid #2a3335;
 }
 
 .radio-selector label {
@@ -515,8 +515,6 @@ body {
   border-radius: 5px;
 }
 
-
-
 .controls {
   display: flex;
   align-items: center;
@@ -524,7 +522,7 @@ body {
   margin-top: 15px;
 }
 
-.controls label { 
+.controls label {
   min-width: 70px;
   margin-right: 10px;
   text-align: right;
@@ -551,10 +549,6 @@ body {
   border-radius: 5px;
 }
 
-
-
-
-
 .panel :disabled,
 .param-panel :disabled {
   opacity: 0.5;
@@ -580,5 +574,3 @@ body {
   opacity: 0.6;
   filter: grayscale(15%);
 }
-
-
