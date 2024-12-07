@@ -381,10 +381,9 @@ body {
   align-items: center;
   font-family: Arial;
   font-size: 20px;
-  margin-right: 5%;
+  margin-right: 40px;
   margin-top: 15px;
   padding-right: 80px;
-  margin-bottom: 1px;
 }
 
 .switch {
@@ -517,8 +516,9 @@ body {
 
 .controls {
   display: flex;
+  font-size: 20px;
   align-items: center;
-  margin-right: 70px;
+  margin-right: 73px;
   margin-top: 15px;
 }
 
