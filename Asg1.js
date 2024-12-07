@@ -2,9 +2,11 @@
 // Variable Declaration
 /*-----------------------------------------------------------------------------------*/
 
+let cBuffer, posBuffer, texBuffer; // Ensure buffers are global
+
 // Common variables
 var canvas, gl, program;
-var posBuffer, colBuffer, texBuffer, vPosition, vColor, vTexCoord;
+var vPosition, vColor, vTexCoord;
 var modelViewMatrixLoc, projectionMatrixLoc, texCoordLoc;
 var modelViewMatrix, projectionMatrix, texture;
 
@@ -30,10 +32,10 @@ var vertices = [
 
 // Different colors for a tetrahedron (RGBA)
 var baseColors = [
-    vec4(1.0, 0.2, 0.4, 1.0),
-    vec4(0.0, 0.9, 1.0, 1.0),
-    vec4(0.2, 0.2, 0.5, 1.0),
-    vec4(1.0, 0.647, 0.0, 1.0)
+    vec4(0.07059, 0.80784, 0.99216, 1.0),
+    vec4(0.03922, 0.50588, 1.0, 1.0),
+    vec4(0.0, 1.0, 0.53333, 1.0),
+    vec4(1.0, 1.0, 0.0, 1.0)
 ];
 
 // Define texture coordinates for texture mapping onto a shape or surface
@@ -207,57 +209,53 @@ function getUIElement() {
     };
 }
 
-// Configure WebGL Settings
-function configWebGL()
-{
-    // Initialize the WebGL context
-    gl = WebGLUtils.setupWebGL(canvas);
-    
-    if(!gl)
-    {
-        alert("WebGL isn't available");
-    };
 
-    // Set the viewport and clear the color
+
+// Configure WebGL Settings
+function configWebGL() {
+    gl = WebGLUtils.setupWebGL(canvas);
+
+    if (!gl) {
+        alert("WebGL isn't available");
+        return;
+    }
+
+    // Set up viewport and shaders
     gl.viewport(0, 0, canvas.width, canvas.height);
     gl.clearColor(1.0, 1.0, 1.0, 1.0);
-
-    // Enable hidden-surface removal
     gl.enable(gl.DEPTH_TEST);
 
-    // Compile the vertex and fragment shaders and link to WebGL
     program = initShaders(gl, "vertex-shader", "fragment-shader");
     gl.useProgram(program);
 
-    // Create buffers and link them to the corresponding attribute variables in vertex and fragment shaders
-    // Buffer for positions
+    // Initialize position buffer
     posBuffer = gl.createBuffer();
     gl.bindBuffer(gl.ARRAY_BUFFER, posBuffer);
     gl.bufferData(gl.ARRAY_BUFFER, flatten(points), gl.STATIC_DRAW);
 
-    vPosition = gl.getAttribLocation(program, "vPosition");
+    const vPosition = gl.getAttribLocation(program, "vPosition");
     gl.vertexAttribPointer(vPosition, 4, gl.FLOAT, false, 0, 0);
     gl.enableVertexAttribArray(vPosition);
 
-    // Buffer for colors
-    colBuffer = gl.createBuffer();
-    gl.bindBuffer(gl.ARRAY_BUFFER, colBuffer);
+    // Initialize color buffer
+    cBuffer = gl.createBuffer();
+    gl.bindBuffer(gl.ARRAY_BUFFER, cBuffer);
     gl.bufferData(gl.ARRAY_BUFFER, flatten(colors), gl.STATIC_DRAW);
-    
-    vColor = gl.getAttribLocation(program, "vColor");
+
+    const vColor = gl.getAttribLocation(program, "vColor");
     gl.vertexAttribPointer(vColor, 4, gl.FLOAT, false, 0, 0);
     gl.enableVertexAttribArray(vColor);
 
-    // Buffer for textures
+    // Initialize texture buffer
     texBuffer = gl.createBuffer();
     gl.bindBuffer(gl.ARRAY_BUFFER, texBuffer);
     gl.bufferData(gl.ARRAY_BUFFER, flatten(textures), gl.STATIC_DRAW);
-    
-    vTexCoord = gl.getAttribLocation(program, "vTexCoord");
+
+    const vTexCoord = gl.getAttribLocation(program, "vTexCoord");
     gl.vertexAttribPointer(vTexCoord, 2, gl.FLOAT, false, 0, 0);
     gl.enableVertexAttribArray(vTexCoord);
 
-    // Get the location of the uniform variables within a compiled shader program
+    // Uniforms
     modelViewMatrixLoc = gl.getUniformLocation(program, "modelViewMatrix");
     projectionMatrixLoc = gl.getUniformLocation(program, "projectionMatrix");
     texCoordLoc = gl.getUniformLocation(program, "texture");
@@ -289,6 +287,7 @@ function render()
 
     // Draw the primitive / geometric shape
     gl.drawArrays(gl.TRIANGLES, 0, points.length);
+    
 }
 
 // Recompute points and colors, followed by reconfiguring WebGL for rendering
@@ -303,6 +302,7 @@ function recompute()
     configWebGL();
     render();
 }
+
 
 // Update the animation frame
 function animUpdate()
@@ -582,7 +582,7 @@ function animUpdate()
             iterTemp++;
             break;
     }
-
+    
     // Perform vertex transformation
     modelViewMatrix = mult(modelViewMatrix, rotateZ(theta[2]));
     modelViewMatrix = mult(modelViewMatrix, rotateY(theta[1]));
@@ -699,9 +699,99 @@ function configureTexture(tex)
     }
 }
 
+document.addEventListener("DOMContentLoaded", function () {
+    // Get color picker input elements
+    const colorInputs = [
+        document.getElementById("color1"),
+        document.getElementById("color2"),
+        document.getElementById("color3"),
+        document.getElementById("color4"),
+    ];
+
+    // Function to update the colors array based on baseColors
+    function updateColors() {
+        colors = [];
+        for (let i = 0; i < points.length; i++) {
+            // Assign baseColors cyclically to vertices
+            colors.push(baseColors[i % baseColors.length]);
+        }
+    }
+
+    // Add event listeners to color picker inputs
+    colorInputs.forEach((input, index) => {
+        if (input) {
+            input.addEventListener("input", () => {
+                // Update the baseColors array with the new color from the picker
+                baseColors[index] = hexToRgba(input.value);
+                console.log(`Color ${index + 1} updated to:`, baseColors[index]);
+
+                // Update the colors array and redraw the object
+                updateColors();
+                displayObject(); // Redraw the object immediately
+            });
+        } else {
+            console.error(`Color picker with ID 'color${index + 1}' not found.`);
+        }
+    });
+
+    // Convert a hex color code to an RGBA vec4 format
+    function hexToRgba(hex) {
+        const bigint = parseInt(hex.slice(1), 16); // Convert hex to integer
+        const r = ((bigint >> 16) & 255) / 255;   // Extract and normalize red component
+        const g = ((bigint >> 8) & 255) / 255;    // Extract and normalize green component
+        const b = (bigint & 255) / 255;          // Extract and normalize blue component
+        return vec4(r, g, b, 1.0);               // Return as vec4 with alpha = 1.0
+    }
+
+    // Function to update buffers and draw the object
+    function displayObject() {
+        // Bind and update the position buffer
+        gl.bindBuffer(gl.ARRAY_BUFFER, posBuffer);
+        gl.bufferData(gl.ARRAY_BUFFER, flatten(points), gl.STATIC_DRAW);
+
+        // Link position attribute to shader program
+        const vPosition = gl.getAttribLocation(program, "vPosition");
+        gl.vertexAttribPointer(vPosition, 4, gl.FLOAT, false, 0, 0);
+        gl.enableVertexAttribArray(vPosition);
+
+        // Bind and update the color buffer
+        gl.bindBuffer(gl.ARRAY_BUFFER, cBuffer);
+        gl.bufferData(gl.ARRAY_BUFFER, flatten(colors), gl.STATIC_DRAW);
+
+        // Link color attribute to shader program
+        const vColor = gl.getAttribLocation(program, "vColor");
+        gl.vertexAttribPointer(vColor, 4, gl.FLOAT, false, 0, 0);
+        gl.enableVertexAttribArray(vColor);
+
+        // Bind and update the texture buffer
+        gl.bindBuffer(gl.ARRAY_BUFFER, texBuffer);
+        gl.bufferData(gl.ARRAY_BUFFER, flatten(textures), gl.STATIC_DRAW);
+
+        // Link texture coordinate attribute to shader program
+        const vTexCoord = gl.getAttribLocation(program, "vTexCoord");
+        gl.vertexAttribPointer(vTexCoord, 2, gl.FLOAT, false, 0, 0);
+        gl.enableVertexAttribArray(vTexCoord);
+
+        // Clear the canvas and draw the object
+        gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
+        gl.drawArrays(gl.TRIANGLES, 0, points.length);
+
+        // Recompute any additional logic (if necessary)
+        recompute();
+    }
+
+    // Flatten a nested array into a single Float32Array
+    function flatten(arr) {
+        return new Float32Array(arr.reduce((acc, val) => acc.concat(val), []));
+    }
+    
+});
+
+
 /*-----------------------------------------------------------------------------------*/
 // 3D Sierpinski Gasket
 /*-----------------------------------------------------------------------------------*/
+
 
 // Form a triangle
 function triangle(a, b, c, color)

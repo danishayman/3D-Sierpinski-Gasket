@@ -85,8 +85,8 @@ body {
 }
 
 .radio-selector {
-	margin-top: 5px;
-	margin-bottom: 50px;
+	margin-top: 0px;
+	margin-bottom: 20px;
 	--container_width: 300px;
 	position: relative;
 	display: flex;
@@ -430,6 +430,30 @@ body {
 	box-shadow: 0 0px 20px rgba(0, 0, 0, 0.4);
 	transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   }
+
+  .color-picker {
+    width: 50px; /* Adjust the size to your preference */
+    height: 50px;
+    border: 3px solid #2A3335; /* Matches the existing border color theme */
+    border-radius: 10px; /* Rounded corners to match the style */
+    background-color: #ffffff; /* Default white background */
+    cursor: pointer;
+    margin: 10px; /* Add spacing */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.color-picker:hover {
+    transform: scale(1.1); /* Slight zoom on hover */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Stronger shadow */
+}
+
+.color-picker:focus {
+    outline: none; /* Remove default outline */
+    border: 3px solid #0A5EB0; /* Highlight color */
+    box-shadow: 0 0 8px #0A5EB0; /* Glow effect on focus */
+}
+
   
   /* When the checkbox is checked, change slider background color */
   .switch input:checked + .slider {
@@ -461,3 +485,4 @@ body {
 	  grid-template-columns: 1fr; /* Single column layout */
 	}
   }
+  
