@@ -758,6 +758,47 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 });
 
+document.addEventListener("DOMContentLoaded", () => {
+  const canvas = document.getElementById("gl-canvas");
+  const gl = canvas.getContext("webgl");
+
+  // Check if WebGL is available
+  if (!gl) {
+    alert("WebGL isn't available in your browser.");
+    return;
+  }
+
+  const colorPicker = document.getElementById("background-color-picker");
+
+    // Function to update the WebGL canvas background color
+  const updateBackgroundColor = (event) => {
+    // Get the selected color from the color picker
+    const hexColor = event.target.value;
+
+    // Convert hex to normalized RGBA values
+    const r = parseInt(hexColor.substring(1, 3), 16) / 255;
+    const g = parseInt(hexColor.substring(3, 5), 16) / 255;
+    const b = parseInt(hexColor.substring(5, 7), 16) / 255;
+
+    // Apply the new background color
+    gl.clearColor(r, g, b, 1.0); // RGB + alpha (opacity)
+    gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
+
+    // Re-render the Sierpinski Gasket
+    render(); // Ensure `render()` exists and draws your gasket
+  };
+
+  // Add event listener to the color picker
+  colorPicker.addEventListener("input", updateBackgroundColor);
+
+  // Initial WebGL setup
+  gl.clearColor(1.0, 1.0, 1.0, 1.0); // Default white
+  gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
+
+  // Initial render
+  render(); // Ensure your `render()` function exists
+});
+
 /*-----------------------------------------------------------------------------------*/
 // 3D Sierpinski Gasket
 /*-----------------------------------------------------------------------------------*/
@@ -807,54 +848,4 @@ function divideTetra(a, b, c, d, count) {
   }
 }
 
-
-//Edit button
-document.addEventListener("DOMContentLoaded", () => {
-  const canvas = document.getElementById("gl-canvas");
-  const gl = canvas.getContext("webgl");
-
-  // Check if WebGL is available
-  if (!gl) {
-    alert("WebGL isn't available in your browser.");
-    return;
-  }
-
-  // Get controls
-  const colorPicker = document.getElementById("background-color-picker");
-  const changeButton = document.getElementById("change-background-btn");
-
-  // Set initial background color (white)
-  let backgroundColor = [1.0, 1.0, 1.0, 1.0]; // RGBA values
-
-  // Function to update the WebGL canvas background color
-  const updateBackgroundColor = () => {
-    // Get the selected color from the color picker
-    const hexColor = colorPicker.value;
-
-    // Convert hex to normalized RGBA values
-    const r = parseInt(hexColor.substring(1, 3), 16) / 255;
-    const g = parseInt(hexColor.substring(3, 5), 16) / 255;
-    const b = parseInt(hexColor.substring(5, 7), 16) / 255;
-
-    // Update the background color
-    backgroundColor = [r, g, b, 1.0];
-
-    // Apply the new color
-    gl.clearColor(...backgroundColor);
-    gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
-
-    // Re-render the Sierpinski Gasket or other objects
-    render(); // Assuming `render()` exists and draws your gasket
-  };
-
-  // Event listener for the button
-  changeButton.addEventListener("click", updateBackgroundColor);
-
-  // Initial WebGL setup
-  gl.clearColor(...backgroundColor);
-  gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
-
-  // Initial render (draw the Sierpinski Gasket)
-  render(); // Ensure your `render()` function exists
-});
 /*-----------------------------------------------------------------------------------*/
