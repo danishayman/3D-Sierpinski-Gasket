@@ -79,12 +79,6 @@
         crossorigin="anonymous"
         hidden
       />
-
-      <div class="controls">
-        <label id="background-color-label" for="background-color-picker">Background Color:</label>
-        <input type="color" id="background-color-picker" value="#ffffff">
-      </div>
-
     </div>
 
     <!-- Panel for parameter customization -->
@@ -198,7 +192,7 @@
                     <polyline points="1.5 6 4.5 9 10.5 1"></polyline>
                   </svg>
                 </span>
-                <span>Top Right - Bottom Left</span>
+                <span>Top Left - Bottom Right</span>
               </label>
             </div>
 
@@ -214,7 +208,7 @@
                     <polyline points="1.5 6 4.5 9 10.5 1"></polyline>
                   </svg>
                 </span>
-                <span>Top Left - Bottom Right</span>
+                <span>Top Right - Bottom Left</span>
               </label>
             </div>
           </div>
@@ -222,21 +216,26 @@
 
         <div class="colorPickers">
           <div class="colorItem">
-            <label for="color1">Color 1:</label>
+            <label for="color1">Colour 1:</label>
             <input type="color" id="color1" value="#FF3366" />
           </div>
           <div class="colorItem">
-            <label for="color2">Color 2:</label>
+            <label for="color2">Colour 2:</label>
             <input type="color" id="color2" value="#00E6FF" />
           </div>
           <div class="colorItem">
-            <label for="color3">Color 3:</label>
+            <label for="color3">Colour 3:</label>
             <input type="color" id="color3" value="#333380" />
           </div>
           <div class="colorItem">
-            <label for="color4">Color 4:</label>
+            <label for="color4">Colour 4:</label>
             <input type="color" id="color4" value="#FF9900" />
           </div>
+        </div>
+
+        <div class="controls">
+          <label id="background-color-label" for="background-color-picker">Background Colour:</label>
+          <input type="color" id="background-color-picker" value="#ffffff">
         </div>
 
         <!-- UI Section for Texture -->
@@ -249,6 +248,8 @@
             </label>
             <label for="texture-toggle" class="texture-label"></label>
           </div>
+
+          
 
           <div class="start-button">
             <button id="start-btn">Start</button>

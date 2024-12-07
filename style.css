@@ -34,7 +34,7 @@ body {
 
 .canvas {
   background-color: #ffffff;
-  line-height: 30px;
+  line-height: 10px;
   color: #009688;
   padding: 25px;
   box-shadow: inset #009688 0 0 0 5px, inset #059c8e 0 0 0 1px,
@@ -333,7 +333,7 @@ body {
 }
 
 #start-btn {
-  margin: 40px 0px 5px 0px;
+  margin: 10px 0px 5px 0px;
   width: 270px;
   height: 70px;
   background: #0a97b0;
@@ -382,8 +382,9 @@ body {
   font-family: Arial;
   font-size: 20px;
   margin-right: 5%;
-  margin-top: 20px;
+  margin-top: 15px;
   padding-right: 80px;
+  margin-bottom: 1px;
 }
 
 .switch {
@@ -505,7 +506,6 @@ body {
   border-radius: 10px;
 }
 
-/* Optional: Style the color picker's "thumb" */
 .colorItem input[type="color"]::-webkit-color-swatch-wrapper {
   padding: 0;
 }
@@ -514,6 +514,46 @@ body {
   border: none;
   border-radius: 5px;
 }
+
+
+
+.controls {
+  display: flex;
+  align-items: center;
+  margin-right: 70px;
+  margin-top: 15px;
+}
+
+.controls label { 
+  min-width: 70px;
+  margin-right: 10px;
+  text-align: right;
+}
+
+.controls input[type="color"] {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  width: 50px;
+  height: 30px;
+  border: 2px solid #2a3335;
+  padding: 0;
+  cursor: pointer;
+  border-radius: 10px;
+}
+
+.controls input[type="color"]::-webkit-color-swatch-wrapper {
+  padding: 0;
+}
+
+.controls input[type="color"]::-webkit-color-swatch {
+  border: none;
+  border-radius: 5px;
+}
+
+
+
+
 
 .panel :disabled,
 .param-panel :disabled {
@@ -541,9 +581,4 @@ body {
   filter: grayscale(15%);
 }
 
-#background-color-label {
-  color: #000000; /* Example color: black */
-  font-size: 16px;
-  font-weight: bold; 
-  font-family: Arial, sans-serif; /* Ensure consistent font style */
-}
+
