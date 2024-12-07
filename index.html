@@ -64,12 +64,6 @@
       <canvas id="gl-canvas" width="1280" height="720">
         Error: your browser doesn't support the HTML5 canvas element
       </canvas>
-
-      <div class="controls">
-        <input type="color" id="background-color-picker" value="#ffffff" />
-        <button id="change-background-btn">Change Background</button>
-      </div>
-
       
       <img
         id="notexture"
@@ -85,6 +79,12 @@
         crossorigin="anonymous"
         hidden
       />
+
+      <div class="controls">
+        <label id="background-color-label" for="background-color-picker">Background Color:</label>
+        <input type="color" id="background-color-picker" value="#ffffff">
+      </div>
+
     </div>
 
     <!-- Panel for parameter customization -->
