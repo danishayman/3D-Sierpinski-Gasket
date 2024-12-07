@@ -541,21 +541,9 @@ body {
   filter: grayscale(15%);
 }
 
-
-button {
-  background-color: #0a97b0; /* Teal color */
-  color: white; /* Text color */
-  font-size: 15px; /* Text size */
-  font-weight: bold; /* Text bold */
-  border: 5px solid #2a3335;
-  border-radius: 10px;
-  border-radius: 5px; /* Rounded corners */
-  padding: 10px 20px; /* Padding for the button */
-  cursor: pointer; /* Pointer cursor on hover */
-  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
-}
-
-button:hover {
-  background-color: #0a97b0; /* Slightly darker teal for hover effect */
-  transform: scale(1.03);
+#background-color-label {
+  color: #000000; /* Example color: black */
+  font-size: 16px;
+  font-weight: bold; 
+  font-family: Arial, sans-serif; /* Ensure consistent font style */
 }
