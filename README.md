@@ -2,6 +2,8 @@
 
 This project is an interactive WebGL application that renders a 3D Sierpinski Gasket. It allows users to customize the gasket's appearance and animation through various controls.
 
+[Try the Demo yourself here!](https://danishayman.github.io/CPC354-Asg1/)
+
 ![alt text](images/image.png)
 
 ## Features
