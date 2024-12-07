@@ -79,7 +79,11 @@
 
 	<!-- Panel for parameter customization -->
 	<div class="panel vertical-align">
-		Number of Subdivision
+		
+
+		<!-- Slider for animation loop count -->
+		<div class="param vertical-align">
+			Number of Subdivision
 		<div class="radio-selector">
 			<label>
 				<input type="radio" name="subdiv" value="1" id="subdiv-1" checked />
@@ -103,9 +107,6 @@
 			</label>
 			<span class="selection"></span>
 		</div>
-
-		<!-- Slider for animation loop count -->
-		<div class="param vertical-align">
 			Number of Iteration
 			<div class="radio-selector">
 				<label>
@@ -177,11 +178,9 @@
 						</label>
 					</div>
 
-
-
 					<div class="checkbox-wrapper-46">
-						<input type="checkbox" id="top-right-bottom-left" class="inp-cbx" />
-						<label for="top-right-bottom-left" class="cbx">
+						<input type="checkbox" id="top-left-bottom-right" class="inp-cbx" />
+						<label for="top-left-bottom-right" class="cbx">
 							<span>
 								<svg viewBox="0 0 12 10" height="10px" width="12px">
 									<polyline points="1.5 6 4.5 9 10.5 1"></polyline>
@@ -192,22 +191,29 @@
 					</div>
 
 					<div class="checkbox-wrapper-46">
-						<input type="checkbox" id="top-left-bottom-right" class="inp-cbx" />
-						<label for="top-left-bottom-right" class="cbx">
+						<input type="checkbox" id="top-right-bottom-left" class="inp-cbx" />
+						<label for="top-right-bottom-left" class="cbx">
 							<span>
 								<svg viewBox="0 0 12 10" height="10px" width="12px">
 									<polyline points="1.5 6 4.5 9 10.5 1"></polyline>
 								</svg>
 							</span>
-							<span>Top Left  - Bottom Right</span>
+							<span>Top Left - Bottom Right</span>
 						</label>
 					</div>
-
-
-
-
 				</div>
 			</div>
+			<div class="colorPickers">
+				<label for="color1">Color 1:</label>
+				<input type="color" id="color1" value="#12cef4">
+				<label for="color2">Color 2:</label>
+				<input type="color" id="color2" value="#096eff">
+				<label for="color3">Color 3:</label>
+				<input type="color" id="color3" value="#00ff88">
+				<label for="color4">Color 4:</label>
+				<input type="color" id="color4" value="#ffff00">
+			  </div>
+			  
 
 			<!-- UI Section for Texture -->
 			<div id="param-panel" class="vertical-align">
