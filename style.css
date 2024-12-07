@@ -540,11 +540,6 @@ body {
 	filter: grayscale(15%);
   }
   
-  .checkbox-wrapper-46 .cbx:has(input:disabled) { 
-	opacity: 0.5;
-	filter: grayscale(100%);
-  }
-  
   .switch :disabled + .slider {
 	opacity: 0.6;
 	filter: grayscale(15%);
@@ -553,3 +548,9 @@ body {
   .switch :disabled + .slider:before {
 	opacity: 0.6;
   }
+
+.checkbox-wrapper-46 input[type="checkbox"]:disabled + .cbx {
+    opacity: 0.6;
+    filter: grayscale(15%);
+}
+
