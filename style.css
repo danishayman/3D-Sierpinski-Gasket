@@ -402,7 +402,6 @@ body {
 	margin-left: 20px;
   }
   
-  /* Hide default HTML checkbox */
   .switch input {
 	opacity: 0;
 	width: 0;
@@ -525,4 +524,32 @@ body {
   .colorItem input[type="color"]::-webkit-color-swatch {
 	border: none;
 	border-radius: 5px;
+  }
+
+
+
+  .panel :disabled, 
+  .param-panel :disabled {
+	opacity: 0.5; 
+	pointer-events: none; 
+	filter: grayscale(15%); 
+  }
+  
+  .radio-selector:has(input:disabled) { 
+	opacity: 0.6;
+	filter: grayscale(15%);
+  }
+  
+  .checkbox-wrapper-46 .cbx:has(input:disabled) { 
+	opacity: 0.5;
+	filter: grayscale(100%);
+  }
+  
+  .switch :disabled + .slider {
+	opacity: 0.6;
+	filter: grayscale(15%);
+  }
+  
+  .switch :disabled + .slider:before {
+	opacity: 0.6;
   }
