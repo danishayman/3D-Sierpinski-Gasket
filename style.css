@@ -33,9 +33,8 @@ body {
 }
 
 .canvas {
-  background: #fff;
+  background-color: #ffffff;
   line-height: 30px;
-  font-weight: bold;
   color: #009688;
   padding: 25px;
   box-shadow: inset #009688 0 0 0 5px, inset #059c8e 0 0 0 1px,
