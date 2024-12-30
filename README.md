@@ -17,7 +17,7 @@ This project is an interactive WebGL application that renders a 3D Sierpinski Ga
 
 ## How to Run
 
-1. **Clone the repository:** `git clone https://github.com/your-username/3D-Sierpinski-Gasket.git`
+1. **Clone the repository:** `git clone https://github.com/danishayman/3D-Sierpinski-Gasket.git`
 2. **Open `index.html` in a web browser.**
 
 ## Controls
