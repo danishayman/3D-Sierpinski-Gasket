@@ -68,7 +68,28 @@ body {
   padding: 20px;
   box-shadow: 0 0 0 5px #009688, 0 0 0 10px #0cab9c, 0 0 0 15px #8ce9ff;
   box-sizing: border-box;
-  margin-top: 55px;
+  margin-top: 80px;
+  font-family: Arial;
+}
+
+/* Scrollbar styling */
+.panel::-webkit-scrollbar {
+  width: 12px;
+}
+
+.panel::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 6px;
+}
+
+.panel::-webkit-scrollbar-thumb {
+  background: #009688;
+  border-radius: 6px;
+  border: 3px solid #f1f1f1;
+}
+
+.panel::-webkit-scrollbar-thumb:hover {
+  background: #00796b;
 }
 
 /* Layout utilities */
@@ -89,11 +110,8 @@ body {
 /* Control section styling */
 .param-panel {
   width: 100%;
-  background-color: #f8f9fa;
   padding: 15px;
-  border-radius: 10px;
   margin: 10px 0;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 /* Radio selector styling */
@@ -268,7 +286,7 @@ body {
   }
 
   .param-panel {
-    padding: 10px;
+    padding: 3px;
   }
 
   .radio-selector {
