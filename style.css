@@ -69,7 +69,8 @@ body {
   box-shadow: 0 0 0 5px #009688, 0 0 0 10px #0cab9c, 0 0 0 15px #8ce9ff;
   box-sizing: border-box;
   margin-top: 80px;
-  font-family: Arial;
+  font-family: Robotomono, monospace;
+  font-size: 20px;
 }
 
 /* Scrollbar styling */
@@ -110,7 +111,7 @@ body {
 /* Control section styling */
 .param-panel {
   width: 100%;
-  padding: 15px;
+  padding: 3px;
   margin: 10px 0;
 }
 
