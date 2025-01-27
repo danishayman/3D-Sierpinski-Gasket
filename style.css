@@ -71,6 +71,8 @@ body {
   margin-top: 80px;
   font-family: Robotomono, monospace;
   font-size: 20px;
+  font-weight: 900;
+  align-items: center;
 }
 
 /* Scrollbar styling */
