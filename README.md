@@ -2,7 +2,7 @@
 
 This project is an interactive WebGL application that renders a 3D Sierpinski Gasket. It allows users to customize the gasket's appearance and animation through various controls.
 
-[Try the Demo yourself here!](https://danishayman.github.io/CPC354-Asg1/)
+[Try the Demo yourself here!](https://danishayman.github.io/3D-Sierpinski-Gasket/)
 
 ![alt text](images/image.png)
 
@@ -17,7 +17,7 @@ This project is an interactive WebGL application that renders a 3D Sierpinski Ga
 
 ## How to Run
 
-1. **Clone the repository:** `git clone https://github.com/your-username/3D-Sierpinski-Gasket.git`
+1. **Clone the repository:** `git clone https://github.com/danishayman/3D-Sierpinski-Gasket.git`
 2. **Open `index.html` in a web browser.**
 
 ## Controls

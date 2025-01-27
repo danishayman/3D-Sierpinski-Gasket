@@ -452,48 +452,7 @@ function animUpdate() {
       }
       break;
 
-    case 11: // Animation 12: Move the triangle to the top right corner
-      if (topRightBottomLeft.checked) {
-        move[0] += 0.0125 * speedNum;
-        move[1] += 0.005 * speedNum;
-
-        if (move[0] >= 3.0 && move[1] >= 1.2) {
-          move[0] = 3.0;
-          move[1] = 1.2;
-          animSeq++;
-        }
-      } else {
-        animSeq++;
-      }
-      break;
-
-    case 12: // Animation 13: Move the triangle to the bottom left corner
-      if (topRightBottomLeft.checked) {
-        move[0] -= 0.0125 * speedNum;
-        move[1] -= 0.005 * speedNum;
-
-        if (move[0] <= -3.0 && move[1] <= -1.2) {
-          move[0] = -3.0;
-          move[1] = -1.2;
-          animSeq++;
-        }
-      } else {
-        animSeq++;
-      }
-      break;
-
-    case 13: // Animation 14: Move the triangle to the original position
-      move[0] += 0.0125 * speedNum;
-      move[1] += 0.005 * speedNum;
-
-      if (move[0] >= 0 && move[1] >= 0) {
-        move[0] = 0;
-        move[1] = 0;
-        animSeq++;
-      }
-      break;
-
-    case 14: // Animation 15: Move the triangle to the top left corner
+    case 11: // Animation 12: Move the triangle to the top left corner
       if (topLeftBottomRight.checked) {
         move[0] -= 0.0125 * speedNum;
         move[1] += 0.005 * speedNum;
@@ -508,7 +467,7 @@ function animUpdate() {
       }
       break;
 
-    case 15: // Animation 16: Move the triangle to the bottom right corner
+    case 12: // Animation 13: Move the triangle to the bottom right corner
       if (topLeftBottomRight.checked) {
         move[0] += 0.0125 * speedNum;
         move[1] -= 0.005 * speedNum;
@@ -523,7 +482,7 @@ function animUpdate() {
       }
       break;
 
-    case 16: // Animation 17: Move the triangle to the original position
+    case 13: // Animation 14: Move the triangle to the original position
       move[0] -= 0.0125 * speedNum;
       move[1] += 0.005 * speedNum;
 
@@ -535,6 +494,49 @@ function animUpdate() {
       }
       break;
 
+
+    case 14: // Animation 15: Move the triangle to the top right corner
+      if (topRightBottomLeft.checked) {
+        move[0] += 0.0125 * speedNum;
+        move[1] += 0.005 * speedNum;
+
+        if (move[0] >= 3.0 && move[1] >= 1.2) {
+          move[0] = 3.0;
+          move[1] = 1.2;
+          animSeq++;
+        }
+      } else {
+        animSeq++;
+      }
+      break;
+
+    case 15: // Animation 16: Move the triangle to the bottom left corner
+      if (topRightBottomLeft.checked) {
+        move[0] -= 0.0125 * speedNum;
+        move[1] -= 0.005 * speedNum;
+
+        if (move[0] <= -3.0 && move[1] <= -1.2) {
+          move[0] = -3.0;
+          move[1] = -1.2;
+          animSeq++;
+        }
+      } else {
+        animSeq++;
+      }
+      break;
+
+    case 16: // Animation 17: Move the triangle to the original position
+      move[0] += 0.0125 * speedNum;
+      move[1] += 0.005 * speedNum;
+
+      if (move[0] >= 0 && move[1] >= 0) {
+        move[0] = 0;
+        move[1] = 0;
+        animSeq++;
+      }
+      break;
+
+    
     default: // Reset animation sequence
       animSeq = 0;
       iterTemp++;
